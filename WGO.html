@@ -133,7 +133,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 const MIN_USERS = 504084;
 const MAX_USERS = 850602;
 const UPDATE_INTERVAL = 3000;   // ms
-const ANIMATION_DURATION = 1200; // ms
+const ANIMATION_DURATION = 2490; // ms
 
 // Shared state
 window.globalOnlineUsers = Math.floor((MIN_USERS + MAX_USERS) / 2);
@@ -148,7 +148,7 @@ function animateCounter(targetValue){
     isAnimating = true;
     const startValue = currentUsers;
     const range = targetValue - startValue;
-    const frameDuration = 20;
+    const frameDuration = 60;
     const totalFrames = Math.ceil(ANIMATION_DURATION / frameDuration);
     let currentFrame = 0;
     const timer = setInterval(() => {
@@ -174,7 +174,7 @@ function animateCounter(targetValue){
 }
 
 function updateOnlineCounter(){
-    const randomChange = Math.floor(Math.random() * 12) - 6;
+    const randomChange = Math.floor(Math.random() * 480) - 180;
     let newTarget = currentUsers + randomChange;
     newTarget = Math.max(MIN_USERS, Math.min(MAX_USERS, newTarget));
     newTarget = Math.floor(newTarget);
