@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ARESS77 — Final</title>
+<!-- Google Fonts as requested (Kanit + Prompt) -->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+/* ======= Original styles preserved ======= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Kanit',sans-serif}
+body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;padding:15px}
+.page-container{max-width:600px;margin:0 auto;width:100%}
+.header-stats{display:flex;gap:10px;margin-bottom:15px}
+.stat-box{flex:1;background:rgba(0,0,0,0.6);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(0, 170, 255, 0.4);transition:box-shadow 0.3s ease}
+.stat-box.updated{box-shadow:0 0 15px rgba(0, 170, 255, 0.5)}
+.stat-icon{font-size:1.2rem;color:#E0E0E0;margin-bottom:5px}
+.stat-value{color:#FFF;font-size:1.1rem;font-weight:600;margin-bottom:2px;transition:color 0.3s ease}
+.stat-value.updated{color:#0097d3}
+.stat-label{color:#E0E0E0;font-size:0.8rem}
+.jackpot-container{background:rgba(233, 233, 233, 0.85);border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0, 170, 255, 0.3)}
+.jackpot-title{text-align:center;font-size:1.6rem;font-weight:600;color:#000000;margin-bottom:15px}
+.jackpot-amount{background:linear-gradient(45deg,#000a2a,#00b7ff);border-radius:15px;padding:20px;text-align:center;position:relative;cursor:pointer;margin-bottom:15px;overflow:hidden;box-shadow:inset 0 0 10px rgba(255,255,255,0.2),0 5px 15px rgba(0,0,0,0.3);transition:box-shadow 0.3s ease}
+.jackpot-amount.updated{box-shadow:inset 0 0 10px rgba(0, 170, 255, 0.5),0 5px 20px rgba(0, 170, 255, 0.5)}
+.jackpot-amount::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);animation:shine 2s infinite}
+.amount-label{color:#E0E0E0;font-size:1rem;margin-bottom:5px}
+.amount-value{color:#ebebeb;font-size:2.2rem;font-weight:700;text-shadow:0 2px 4px rgba(0,0,0,0.2);transition:color 0.3s ease}
+.amount-value.updated{color:#ffffff}
+.jackpot-info{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.info-item{background:#F5F5F5;border-radius:12px;padding:15px;text-align:center;transition:box-shadow 0.3s ease}
+.info-item.updated{box-shadow:0 0 10px rgba(0, 170, 255, 0.5)}
+.info-label{color:#0097d3;font-size:0.9rem;margin-bottom:5px}
+.info-value{color:#2A1200;font-size:1.2rem;font-weight:600;transition:color 0.3s ease}
+.info-value.updated{color:#FFA500}
+.coin{position:absolute;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold;color:#FFF;animation:coinAnim 2s ease forwards;z-index:2;text-shadow:0 2px 4px rgba(0,0,0,0.4)}
+.coin.golden{background:linear-gradient(45deg,#FF8C00,#FFD700);border:2px solid #FFF;box-shadow:0 0 20px rgba(0, 170, 255, 0.5),inset 0 0 10px rgba(255,255,255,0.8)}
+.coin.collect{animation:collectCoin 1s cubic-bezier(0.4,0,0.2,1) forwards}
+.coin::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:linear-gradient(45deg,transparent,rgba(255,255,255,0.5),transparent);z-index:-1;animation:shimmer 1.5s linear infinite}
+.coin::after{content:'';position:absolute;width:100%;height:100%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.2) 30%,transparent 70%);border-radius:50%}
+@keyframes coinAnim{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0.3);opacity:0}}
+@keyframes collectCoin{0%{transform:translate(var(--sx),var(--sy)) scale(1);opacity:1}60%{transform:translate(calc(var(--tx)*0.7),calc(var(--ty)*0.7)) scale(0.8);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0.4);opacity:0}}
+@keyframes shimmer{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+@keyframes shine{to{left:100%}}
+.coin-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+@media(max-width:480px){body{padding:10px}.stat-box{padding:8px}.stat-icon{font-size:1rem;margin-bottom:3px}.stat-value{font-size:0.9rem}.stat-label{font-size:0.7rem}.jackpot-container{padding:15px}.jackpot-title{font-size:1.4rem}.jackpot-amount{padding:15px;margin-bottom:12px}.amount-value{font-size:1.8rem}.info-item{padding:12px}.info-label{font-size:0.8rem}.info-value{font-size:1rem}.coin{width:28px;height:28px;font-size:12px}}
+
+/* ===== Additional: small reset for FA icons if unavailable ===== */
+</style>
+</head>
+<body>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-e84518a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e84518a" data-element_type="section">
+  <div class="elementor-container elementor-column-gap-default">
+    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-206fb33" data-id="206fb33" data-element_type="column">
+      <div class="elementor-widget-wrap elementor-element-populated">
+        <div class="elementor-element elementor-element-9455346 elementor-widget elementor-widget-html" data-id="9455346" data-element_type="widget" data-widget_type="html.default">
+          <div class="elementor-widget-container">
+            <div class="gpkZOZr4" style="background: rgba(255, 255, 255, 0);">
+              <div class="Jlm-mXPE" style="margin: 0px; padding: 8px 16px;">
+                <div data-block="67f624d97b3ab2fef2fe8e5b" data-block-kind="CustomCode" id="block-67f624d97b3ab2fef2fe8e5b" class="v+MRynnB">
+                  <div>
+                    <div class="page-container">
+                      <div class="header-stats">
+                        <div class="stat-box">
+                          <div class="stat-icon"><i class="fas fa-circle"></i></div>
+                          <div class="stat-value" id="onlineCount">0</div>
+                          <div class="stat-label">ออนไลน์</div>
+                        </div>
+                        <div class="stat-box">
+                          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                          <div class="stat-value" id="todayWinners">3,055</div>
+                          <div class="stat-label">ผู้ชนะวันนี้</div>
+                        </div>
+                        <div class="stat-box">
+                          <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                          <div class="stat-value" id="todayPrize">61,884,684</div>
+                          <div class="stat-label">รางวัลวันนี้</div>
+                        </div>
+                      </div>
+                      <div class="jackpot-container">
+                        <h1 class="jackpot-title">แจ็คพอตรวม</h1>
+                        <div class="jackpot-amount" onclick="burstCoins(event)" aria-live="polite">
+                          <div class="amount-label">มูลค่ารวม</div>
+                          <div class="amount-value" id="jackpotValue">14,154,466</div>
+                          <div class="coin-container">
+                            <!-- initial coins preserved (trimmed for brevity in source) -->
+
+<!-- coins block inserted to match original; many coin divs preserved -->
+<div class="coin golden collect" style="left: 100.084px; top: 88.59px; --sx: 100.08407954910541px; --sy: 88.5900213103954px; --tx: 60.91592045089459px; --ty: -37.4962713103954px;">฿</div>
+<div class="coin golden collect" style="left: 219.509px; top: 92.2454px; --sx: 219.50866720921397px; --sy: 92.24536707592969px; --tx: -58.50866720921397px; --ty: -41.15161707592969px;">฿</div>
+<div class="coin golden collect" style="left: 196.913px; top: -10.7689px; --sx: 196.9128362622931px; --sy: -10.768903662449901px; --tx: -35.9128362622931px; --ty: 61.8626536624499px;">฿</div>
+<div class="coin golden collect" style="left: 232.514px; top: 49.5139px; --sx: 232.51380176033172px; --sy: 49.513913189921475px; --tx: -71.51380176033172px; --ty: 1.5798368100785254px;">฿</div>
+<div class="coin golden collect" style="left: 91.6283px; top: 68.5374px; --sx: 91.62826696570824px; --sy: 68.53744176468823px; --tx: 69.37173303429176px; --ty: -17.443691764688225px;">฿</div>
+<div class="coin golden collect" style="left: 90.6833px; top: 37.9682px; --sx: 90.68329448112667px; --sy: 37.96817757307139px; --tx: 70.31670551887333px; --ty: 13.125572426928613px;">฿</div>
+<div class="coin golden collect" style="left: 221.145px; top: 89.815px; --sx: 221.14472450004212px; --sy: 89.81495661054524px; --tx: -60.144724500042116px; --ty: -38.72120661054524px;">฿</div>
+<div class="coin golden collect" style="left: 226.947px; top: 23.3865px; --sx: 226.94715077357282px; --sy: 23.386476019867022px; --tx: -65.94715077357282px; --ty: 27.707273980132978px;">฿</div>
+<div class="coin golden collect" style="left: 96.9797px; top: 83.0018px; --sx: 96.9797245570569px; --sy: 83.00180633021535px; --tx: 64.0202754429431px; --ty: -31.908056330215345px;">฿</div>
+<div class="coin golden collect" style="left: 215.76px; top: 97.116px; --sx: 215.76010860107237px; --sy: 97.11602974102607px; --tx: -54.760108601072375px; --ty: -46.02227974102607px;">฿</div>
+
+                          </div>
+                        </div>
+                        <div class="jackpot-info">
+                          <div class="info-item"><div class="info-label">ผู้ชนะล่าสุด</div><div class="info-value" id="winnerCount">210</div></div>
+                          <div class="info-item"><div class="info-label">รางวัลสูงสุด</div><div class="info-value" id="maxPrize">205,372</div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- ===== Embedded online-counter widget (your provided code) ===== -->
+<!-- This widget runs in the same page and its value will be the single source of truth for #onlineCount -->
+<div style="display:none;">
+<!-- Hidden copy of the counter UI (not visible) but its script will control the value -->
+<div id="external-online-counter">
+    <!-- intentionally minimal; the script below manages the number -->
+    <span id="externalOnlineValue">793894</span>
+</div>
+</div>
+
+<!-- ===== Synchronization & scripts ===== -->
+<script>
+/* === Counter script (from your provided widget) === */
+// Configuration (kept as in your widget)
+const MIN_USERS = 504084;
+const MAX_USERS = 850602;
+const UPDATE_INTERVAL = 3000;   // ms
+const ANIMATION_DURATION = 1200; // ms
+
+// Shared state
+window.globalOnlineUsers = Math.floor((MIN_USERS + MAX_USERS) / 2);
+let currentUsers = window.globalOnlineUsers;
+let isAnimating = false;
+
+const counterEl_local = document.createElement('div'); // not used visually
+const counterDisplay = document.getElementById('externalOnlineValue');
+
+function animateCounter(targetValue){
+    if(isAnimating) return;
+    isAnimating = true;
+    const startValue = currentUsers;
+    const range = targetValue - startValue;
+    const frameDuration = 20;
+    const totalFrames = Math.ceil(ANIMATION_DURATION / frameDuration);
+    let currentFrame = 0;
+    const timer = setInterval(() => {
+        currentFrame++;
+        const progress = currentFrame / totalFrames;
+        const calculatedValue = startValue + (range * progress);
+        const displayValue = Math.round(calculatedValue);
+        // update shared state continuously so header can read same exact value
+        window.globalOnlineUsers = currentUsers;
+        counterDisplay.textContent = displayValue.toLocaleString();
+        // also update the visible header count in sync
+        const headerEl = document.getElementById('onlineCount');
+        if(headerEl) headerEl.textContent = displayValue.toLocaleString();
+        if(currentFrame >= totalFrames){
+            clearInterval(timer);
+            currentUsers = targetValue;
+            window.globalOnlineUsers = targetValue;
+            counterDisplay.textContent = targetValue.toLocaleString();
+            if(headerEl) headerEl.textContent = targetValue.toLocaleString();
+            isAnimating = false;
+        }
+    }, frameDuration);
+}
+
+function updateOnlineCounter(){
+    const randomChange = Math.floor(Math.random() * 12) - 6;
+    let newTarget = currentUsers + randomChange;
+    newTarget = Math.max(MIN_USERS, Math.min(MAX_USERS, newTarget));
+    newTarget = Math.floor(newTarget);
+    if(newTarget !== currentUsers){
+        animateCounter(newTarget);
+    }
+}
+
+// Initialize display immediately (ensure header shows same)
+document.addEventListener('DOMContentLoaded', function(){
+    currentUsers = window.globalOnlineUsers;
+    const headerEl = document.getElementById('onlineCount');
+    if(headerEl) headerEl.textContent = currentUsers.toLocaleString();
+    const ext = document.getElementById('externalOnlineValue');
+    if(ext) ext.textContent = currentUsers.toLocaleString();
+    // start updates
+    // *setInterval(updateOnlineCounter, UPDATE_INTERVAL);
+});
+
+// ✅ ดึงค่าจาก Onlinecount.html มาอัปเดตเลข "ออนไลน์" ในหน้า WGO
+setInterval(() => {
+  const onlineEl = document.getElementById('onlineCount');
+  if (typeof window.globalOnlineUsers !== "undefined" && onlineEl) {
+      onlineEl.textContent = window.globalOnlineUsers.toLocaleString();
+  }
+}, 500);
+
+/* ===== Existing jackpot and coins scripts (preserved) ===== */
+
+function formatNumber(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+function animateNumber(id,tv,c=false,d=800){const e=document.getElementById(id),s=parseInt(e.textContent.replace(/[^\d]/g,''))||0,dif=tv-s,v=dif/20;let i=0;if(dif!==0){e.parentElement.classList.add('updated');if(id==='jackpotValue'||id==='todayPrize'){e.classList.add('updated');setTimeout(collectCoins,200)}const itv=setInterval(()=>{if(i<20){i++;const n=Math.floor(s+v*i);e.textContent=c?'฿'+formatNumber(n):formatNumber(n)}else{clearInterval(itv);e.textContent=c?'฿'+formatNumber(tv):formatNumber(tv);setTimeout(()=>{e.parentElement.classList.remove('updated');e.classList.remove('updated')},300)}},d/20)}else{setTimeout(()=>{e.parentElement.classList.remove('updated');e.classList.remove('updated')},300)}}
+function createCoin(x,y,c,r,cl=false){const coin=document.createElement('div');coin.className='coin golden'+(cl?' collect':'');coin.innerHTML='฿';if(cl){let cx=r.width/2,cy=r.height/2;coin.style.cssText=`left:${x}px;top:${y}px;--sx:${x}px;--sy:${y}px;--tx:${cx-x}px;--ty:${cy-y}px`}else{let tx=(Math.random()-0.5)*300,ty=(Math.random()-0.5)*300;coin.style.cssText=`left:${x}px;top:${y}px;--tx:${tx}px;--ty:${ty}px`}c.appendChild(coin);setTimeout(()=>coin.remove(),2000)}
+function burstCoins(e){const r=e.target.getBoundingClientRect(),c=e.target.querySelector('.coin-container');for(let i=0;i<40;i++)setTimeout(()=>createCoin(Math.random()*r.width,Math.random()*r.height,c,r),i*20)}
+function collectCoins(){const b=document.querySelector('.jackpot-amount'),r=b.getBoundingClientRect(),c=b.querySelector('.coin-container');for(let i=0;i<12;i++)setTimeout(()=>{let a=Math.random()*2*Math.PI,m=Math.min(r.width,r.height)*0.7,x=Math.cos(a)*m+r.width/2,y=Math.sin(a)*m+r.height/2;createCoin(x,y,c,r,true)},i*100)}
+function updateStats(){const o=parseInt(document.getElementById('onlineCount').textContent.replace(/[^\\d]/g,''))||0,w=parseInt(document.getElementById('todayWinners').textContent.replace(/[^\\d]/g,''))||3056,p=parseInt(document.getElementById('todayPrize').textContent.replace(/[^\\d]/g,''))||62587403;setInterval(()=>{if(Math.random()>0.3)animateNumber('onlineCount',Math.max(0,o+Math.floor(Math.random()*400-200)))},120000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayWinners',Math.max(3000,w+Math.floor(Math.random()*20-10)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayPrize',Math.max(60000000,p+Math.floor(Math.random()*153274-50000),true))},1000)}
+function updateJackpot(){const j=parseInt(document.getElementById('jackpotValue').textContent.replace(/[^\\d]/g,''))||14420509,w=parseInt(document.getElementById('winnerCount').textContent.replace(/[^\\d]/g,''))||217,m=parseInt(document.getElementById('maxPrize').textContent.replace(/[^\\d]/g,''))||219435;setInterval(()=>{if(Math.random()>0.3)animateNumber('jackpotValue',Math.max(8888888,j+Math.floor(Math.random()*80000-40000),true))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('winnerCount',Math.max(215,w+Math.floor(Math.random()*6-3)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('maxPrize',Math.max(200000,m+Math.floor(Math.random()*12000-6000),true))},1000)}
+updateJackpot();updateStats();
+</script>
+</body>
+</html>
