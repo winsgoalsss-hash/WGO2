@@ -45,14 +45,14 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 @media(max-width:480px){body{padding:10px}.stat-box{padding:8px}.stat-icon{font-size:1rem;margin-bottom:3px}.stat-value{font-size:0.9rem}.stat-label{font-size:0.7rem}.jackpot-container{padding:15px}.jackpot-title{font-size:1.4rem}.jackpot-amount{padding:15px;margin-bottom:12px}.amount-value{font-size:1.8rem}.info-item{padding:12px}.info-label{font-size:0.8rem}.info-value{font-size:1rem}.coin{width:28px;height:28px;font-size:12px}}
 
 /* Online Counter */
-.online-counter {background: rgba(255, 255, 255, 0.95);padding: 15px 30px;border-radius: 15px;box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);display: flex;align-items: center;gap: 20px;backdrop-filter: blur(10px);border: 1px solid rgba(255, 255, 255, 0.2);position: relative;overflow: hidden;transition: all 0.3s ease;width: fit-content;margin: 40px auto;}
+.online-counter {background: rgba(255, 255, 255, 0.95);padding: 15px 25px;border-radius: 15px;box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);display: flex;align-items: center;gap: 20px;backdrop-filter: blur(10px);border: 1px solid rgba(255, 255, 255, 0.2);position: relative;overflow: hidden;transition: all 0.3s ease;width: fit-content;margin: 30px auto;}
 .online-counter:hover {transform: translateY(-3px);box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);}
-.online-pulse {position: absolute;width: 100%;height: 100%;background: radial-gradient(circle, rgba(46, 196, 84, 0.1) 0%, rgba(46, 196, 84, 0) 70%);border-radius: 15px;animation: pulse 2s ease-out infinite;top: 0;left: 0;}
-.counter-left {display: flex;align-items: center;gap: 12px;padding-right: 20px;border-right: 2px solid rgba(255, 255, 255, 0.3);}
+.online-pulse {position: absolute;width: 100%;height: 100%;background: radial-gradient(circle, rgba(46, 196, 84, 0.256) 0%, rgba(46, 196, 84, 0) 70%);border-radius: 15px;animation: pulse 2s ease-out infinite;top: 0;left: 0;}
+.counter-left {display: flex;align-items: center;gap: 12px;padding-right: 20px;border-right: 2px solid rgba(0, 0, 0, 0.173);}
 .counter-right {display: flex;flex-direction: column;text-align: right;}
-.counter-icon {width: 35px;height: 35px;filter: invert(57%) sepia(53%) saturate(638%) hue-rotate(93deg) brightness(95%) contrast(87%);}
-.counter-number {font-size: 28px;font-weight: 700;color: #2EC454;display: flex;align-items: center;gap: 8px;transition: all 0.6s ease-in-out;}
-.online-indicator {width: 8px;height: 8px;background-color: #2EC454;border-radius: 50%;display: inline-block;animation: blink 1.5s ease infinite;margin-left: 5px;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}
+.counter-icon {width: 50px;height: 35px;filter: invert(57%) sepia(53%) saturate(638%) hue-rotate(93deg) brightness(95%) contrast(87%);}
+.counter-number {font-size: 28px;font-weight: 700;color: #2EC454;display: flex;align-items: center;gap: 1px;transition: all 0.6s ease-in-out;justify-content: flex-end;width: 120px;}
+.online-indicator {width: 8px;height: 8px;background-color: #2ec454;border-radius: 50%;display: inline-block;animation: blink 1.5s ease infinite;margin-left: 5px;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}
 .counter-label {font-size: 16px;color: #333;font-weight: 600;}
 .counter-sublabel {font-size: 12px;color: #666;}
 @keyframes blink {0% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}50% {opacity: 0.5;box-shadow: 0 0 20px rgba(46, 196, 84, 0.3);}100% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}}
@@ -183,6 +183,10 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
       <div class="counter-sublabel">กำลังเล่นอยู่ขณะนี้</div>
     </div>
   </div>
+
+
+  
+
   <br>
   <div class="withdraw-box">
     <div class="withdraw-header">รายการถอนล่าสุด</div>
@@ -271,7 +275,7 @@ const INTERVAL = 3000;
 
     function createItem() {
       const { name, img } = randomBank();
-      const user = `WGO${random(10000, 99999)}xx`;
+      const user = `SPP${random(10000, 99999)}xx`;
       const amount = random(100, 90000).toFixed(2);
       const now = new Date();
       const time = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
