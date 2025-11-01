@@ -165,7 +165,8 @@ const UPDATE_INTERVAL = 3000;   // เวลาในการสุ่มเล
 const ANIMATION_DURATION = 2940; // ระยะเวลาที่ใช้ในการเคลื่อนไหวของตัวเลข (ms)
 
 /* === ฟังก์ชันหลัก === */
-const counterEl = document.getElementById('onlineCounter');
+const iframe = document.getElementById('onlineFrame');
+const source = iframe?.contentDocument?.getElementById('onlineCounter');
 
 // กำหนดให้ตัวแปรเก็บค่าปัจจุบันเป็น "จำนวนเต็ม" เสมอ
 let currentUsers = Math.floor((MIN_USERS + MAX_USERS) / 2);
