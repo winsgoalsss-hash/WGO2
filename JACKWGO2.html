@@ -197,11 +197,17 @@ document.addEventListener('DOMContentLoaded', function(){
 // ✅ ดึงค่าจาก Onlinecount.html มาอัปเดตเลข "ออนไลน์" ในหน้า WGO
 
 setInterval(() => {
-  const source = document.getElementById('onlineCounter');  // อยู่ใน Onlinecount.html
-  const target = document.getElementById('onlineCount');    // อยู่ใน WGO
-  
-  if (source && target) {
-      target.textContent = source.textContent;
+  const frame = document.getElementById('onlineFrame');
+  const target = document.getElementById('onlineCount');
+  if (!frame || !target) return;
+
+  try {
+    const val = frame.contentWindow.globalOnlineUsers;
+    if (typeof val !== "undefined") {
+      target.textContent = val.toLocaleString();
+    }
+  } catch (err) {
+    console.warn("อ่านค่าจาก iframe ไม่ได้:", err);
   }
 }, 500);
 
