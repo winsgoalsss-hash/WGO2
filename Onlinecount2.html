@@ -194,6 +194,7 @@ function animateCounter(targetValue) {
         const displayValue = Math.round(calculatedValue);
         counterEl.textContent = displayValue.toLocaleString();
         window.globalOnlineUsers = displayValue;
+        window.parent.postMessage({ onlineUsers: displayValue }, "*");
         
         if (currentFrame >= totalFrames) {
             clearInterval(timer);
@@ -201,6 +202,7 @@ function animateCounter(targetValue) {
             currentUsers = targetValue;
             counterEl.textContent = currentUsers.toLocaleString();
             window.globalOnlineUsers = currentUsers;
+            window.parent.postMessage({ onlineUsers: currentUsers }, "*");
             isAnimating = false;
         }
     }, frameDuration);
