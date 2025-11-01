@@ -195,10 +195,13 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 // ✅ ดึงค่าจาก Onlinecount.html มาอัปเดตเลข "ออนไลน์" ในหน้า WGO
+
 setInterval(() => {
-  const onlineEl = document.getElementById('onlineCount');
-  if (typeof window.globalOnlineUsers !== "undefined" && onlineEl) {
-      onlineEl.textContent = window.globalOnlineUsers.toLocaleString();
+  const source = document.getElementById('onlineCounter');  // อยู่ใน Onlinecount.html
+  const target = document.getElementById('onlineCount');    // อยู่ใน WGO
+  
+  if (source && target) {
+      target.textContent = source.textContent;
   }
 }, 500);
 
