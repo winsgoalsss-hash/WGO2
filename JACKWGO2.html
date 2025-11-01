@@ -50,9 +50,9 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 .online-pulse {position: absolute;width: 100%;height: 100%;background: radial-gradient(circle, rgba(46, 196, 84, 0.256) 0%, rgba(46, 196, 84, 0) 70%);border-radius: 15px;animation: pulse 2s ease-out infinite;top: 0;left: 0;}
 .counter-left {display: flex;align-items: center;gap: 12px;padding-right: 20px;border-right: 2px solid rgba(0, 0, 0, 0.173);}
 .counter-right {display: flex;flex-direction: column;text-align: right;}
-.counter-icon {width: 50px;height: 35px;filter: invert(57%) sepia(53%) saturate(638%) hue-rotate(93deg) brightness(95%) contrast(87%);}
-.counter-number {font-size: 28px;font-weight: 700;color: #2EC454;display: flex;align-items: center;gap: 1px;transition: all 0.6s ease-in-out;justify-content: flex-end;width: 120px;}
-.online-indicator {width: 8px;height: 8px;background-color: #2ec454;border-radius: 50%;display: inline-block;animation: blink 1.5s ease infinite;margin-left: 5px;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}
+.counter-icon {width: 50px;height: 35px;filter: invert(57%) sepia(53%) saturate(638%) hue-rotate(93deg) brightness(95%) contrast(87%);margin-left: -7px;margin-right: -4px;}
+.counter-number {font-size: 28px;font-weight: 700;color: #2EC454;display: flex;align-items: center;gap: 1px;transition: all 0.6s ease-in-out;justify-content: flex-end;width: 140px;margin-left: -17px;}
+.online-indicator {width: 8px;height: 8px;background-color: #2ec454;border-radius: 50%;display: inline-block;animation: blink 1.5s ease infinite;margin-left: 13px;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}
 .counter-label {font-size: 16px;color: #333;font-weight: 600;}
 .counter-sublabel {font-size: 12px;color: #666;}
 @keyframes blink {0% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}50% {opacity: 0.5;box-shadow: 0 0 20px rgba(46, 196, 84, 0.3);}100% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}}
@@ -169,6 +169,32 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .link-button {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #000000;
+  border-radius: 14px;
+  padding: 8px 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 8, 255, 0.4);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 13, 255, 0.3);
+}
+
+.link-button:hover {
+  background-color: rgba(245, 245, 245, 0.2);
+  box-shadow: 0 0 15px rgba(0, 19, 166, 0.6);
+  transform: translateY(-2px);
+}
+
+.link-button div {
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
 </style>
 </head>
 <body>
@@ -185,6 +211,15 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   </div>
 
 
+  <!-- 🔹 ปุ่ม REG สำหรับลิงก์ไปเว็บภายนอก -->
+<div class="register-button-container" style="text-align:center; margin-top: 15px;">
+  <a href="https://auto.spinpro.site/register?uplineid=NA==" 
+     target="Register" 
+     rel="noopener noreferrer" 
+     class="link-button">
+     <div>สมัครสมาชิกคลิ๊กเลย</div>
+  </a>
+</div>
   
 
   <br>
