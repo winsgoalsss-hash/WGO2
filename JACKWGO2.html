@@ -170,15 +170,19 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
       100% { transform: rotate(360deg); }
     }
 
+    
+
     .register-button-container {
   text-align: center;
   margin-top: 20px;
 }
 
+
+
 .link-button {
   position: relative;
   display: inline-block;
-  padding: 14px 40px;
+  padding: 14px 50px;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -203,6 +207,40 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   z-index: 2;
 }
 
+.Contact-button-container {
+  text-align: center;
+  margin-top: 8px;
+}
+
+
+
+.Ctlink-button {
+  position: relative;
+  display: inline-block;
+  padding: 14px 50px;
+  font-size: 0.9rem;
+  font-weight: 350;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, #60d903, #16c000d8);
+  border: none;
+  border-radius: 14px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(38, 255, 0, 0.4);
+  animation: Ctpulse-glow 3s ease-in-out infinite;
+}
+
+.Ctlink-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 40px rgb(26, 236, 11);
+}
+
+.Ctlink-button span {
+  position: relative;
+  z-index: 2;
+}
 /* แสงออร่าหายใจเข้าออก */
 @keyframes pulse-glow {
   0%, 100% {
@@ -213,6 +251,19 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   50% {
     box-shadow: 0 0 20px rgba(0,170,255,0.7),
                 0 0 35px rgba(0,170,255,0.4);
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes  Ctpulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(38, 255, 0, 0.3),
+                0 0 20px rgba(0, 255, 8, 0.15);
+    filter: brightness(0.95);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 51, 0.7),
+                0 0 35px rgba(13, 255, 0, 0.4);
     filter: brightness(1.15);
   }
 }
@@ -228,6 +279,17 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   z-index: 1;
 }
 
+.Ctlink-button::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(17, 255, 0, 0.25), transparent 70%);
+  filter: blur(12px);
+  animation: aura-pulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
 @keyframes aura-pulse {
   0%, 100% {
     opacity: 0.4;
@@ -236,6 +298,18 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   50% {
     opacity: 0.8;
     transform: scale(1.05);
+  }
+}
+
+/* 🔹 ปุ่มลอยขึ้นลง */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes sheen {
+  100% {
+    transform: rotateZ(60deg) translate(1em, -9em);
   }
 }
 
@@ -256,17 +330,24 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   </div>
 
 
-  <!-- 🔹 ปุ่ม REG สำหรับลิงก์ไปเว็บภายนอก -->
-<div class="register-button-container" style="text-align:center; margin-top: 15px;">
+  <!-- 🔹 ปุ่ม Contact สำหรับลิงก์ไปเว็บภายนอก -->
+<div class="Contact-button-container" style="text-align:center; margin-top: 15px;">
   <a href="https://auto.spinpro.site/register?uplineid=NA==" 
-     target="Register" 
-     rel="noopener noreferrer" 
+     target="Contact" 
+     rel="Contact" 
      class="link-button">
      <div>สมัครสมาชิกคลิ๊กเลย</div>
   </a>
 </div>
-  
-
+<br>
+<div class="register-button-container" style="text-align:center; margin-top: 15px;">
+  <a href="https://auto.spinpro.site/register?uplineid=NA==" 
+     target="Register" 
+     rel="noopener noreferrer" 
+     class=" Ctlink-button">
+     <div>ติดต่อสอบถามโปรโมชชั่น 📢</div>
+  </a>
+</div>
   <br>
   <div class="withdraw-box">
     <div class="withdraw-header">รายการถอนล่าสุด</div>
@@ -276,6 +357,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
     </div>
   </div>
   <br><br>
+
 <div class="page-container">
   <div class="header-stats">
     <div class="stat-box">
