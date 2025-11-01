@@ -196,20 +196,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // ✅ ดึงค่าจาก Onlinecount.html มาอัปเดตเลข "ออนไลน์" ในหน้า WGO
 
-setInterval(() => {
-  const frame = document.getElementById('onlineFrame');
-  const target = document.getElementById('onlineCount');
-  if (!frame || !target) return;
-
-  try {
-    const val = frame.contentWindow.globalOnlineUsers;
-    if (typeof val !== "undefined") {
-      target.textContent = val.toLocaleString();
+window.addEventListener("message", (event) => {
+  if (event.data && typeof event.data.onlineUsers !== "undefined") {
+    const onlineEl = document.getElementById('onlineCount');
+    if (onlineEl) {
+      onlineEl.textContent = event.data.onlineUsers.toLocaleString();
     }
-  } catch (err) {
-    console.warn("อ่านค่าจาก iframe ไม่ได้:", err);
   }
-}, 500);
+});
 
 /* ===== Existing jackpot and coins scripts (preserved) ===== */
 
