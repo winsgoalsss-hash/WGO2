@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KITYOHEHE</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- 🎰 Provider Carousel (Seamless Infinite Loop) -->
+<style>
+/* กล่องหลัก */
+.df-box {
+  max-width: 900px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  border: 2px solid rgba(194, 194, 194, 0.6);
+  border-radius: 15px;
+  background: radial-gradient(circle, rgba(0, 76, 255, 0.08), transparent);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 15px rgba(109, 209, 255, 0.25);
+}
+
+/* เอฟเฟกต์ออร่าหายใจ */
+.df-box::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 13px;
+  background: radial-gradient(circle, rgba(0, 115, 255, 0.15), transparent 80%);
+  background: #000000;
+  filter: blur(20px);
+  animation: aura-pulse 20.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* ตัวสไลด์ */
+.df-scroll {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 100000s linear infinite;
+}
+
+/* สร้าง loop ที่เลื่อนต่อเนื่อง */
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* แต่ละโลโก้ */
+.df-list {
+  display: flex;
+  gap: 30px;
+}
+
+.df-item {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  
+}
+
+.df-item:hover {
+  transform: scale(1.35);
+  background-color: #858585;
+  box-shadow: 0 0 10px rgba(0, 132, 209, 0.5);
+}
+
+.df-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  pointer-events: none; /* กันไม่ให้รบกวนการคลิกโลโก้ */
+}
+
+.df-hot {
+  position: absolute;
+  top: -7px;
+  right: -3.5px;
+  width: 28px;
+  height: 28px;
+  z-index: 100; /* ให้อยู่เหนือสุด */
+  pointer-events: none; /* กันไม่ให้รบกวนการคลิกโลโก้ */
+}
+
+/* มือถือ */
+@media (max-width: 600px) {
+  .df-img { width: 110px; }
+  .df-list { gap: 20px; }
+  .df-scroll { animation-duration: 15s; }
+}
+
+
+</style>
+<body>
+<div class="df-box">
+  <div class="df-scroll">
+    <div class="df-list">
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pg/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pragmaticplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/sa/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/joker/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/evoplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+    </div>
+
+    <!-- duplicate ชุดเดิมเพื่อสร้าง seamless loop -->
+    <div class="df-list">
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pg/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pragmaticplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/sa/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/joker/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/evoplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+    </div>
+  </div>
+</div>
+<script>
+    /* ♾️ ทำให้สไลด์วนไม่รู้จบ */
+  document.addEventListener('DOMContentLoaded', () => {
+    const list = document.getElementById('dfList');
+    const clone = list.cloneNode(true);
+    list.parentNode.appendChild(clone);
+  });
+  
+  </script>
+  </body>
+  </html>
