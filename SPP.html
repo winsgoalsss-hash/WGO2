@@ -324,8 +324,163 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   box-shadow: 0 15px 15px rgba(0,0,0,0.3);
 }
 
+/* กล่องหลัก */
+.df-box {
+  max-width: 900px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  border: 2px solid rgba(194, 194, 194, 0.6);
+  border-radius: 15px;
+  background: radial-gradient(circle, rgba(0, 76, 255, 0.08), transparent);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 15px rgba(109, 209, 255, 0.25);
+}
+
+/* เอฟเฟกต์ออร่าหายใจ */
+.df-box::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 13px;
+  background: radial-gradient(circle, rgba(0, 115, 255, 0.15), transparent 80%);
+  background: #000000;
+  filter: blur(20px);
+  animation: aura-pulse 20.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+/* ตัวสไลด์ */
+.df-scroll {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 100000s linear infinite;
+}
+
+/* สร้าง loop ที่เลื่อนต่อเนื่อง */
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* แต่ละโลโก้ */
+.df-list {
+  display: flex;
+  gap: 30px;
+}
+
+.df-item {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  
+}
+
+.df-item:hover {
+  transform: scale(1.35);
+  background-color: #858585;
+  box-shadow: 0 0 10px rgba(0, 132, 209, 0.5);
+}
+
+.df-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  pointer-events: none; /* กันไม่ให้รบกวนการคลิกโลโก้ */
+}
+
+.df-hot {
+  position: absolute;
+  top: -7px;
+  right: -3.5px;
+  width: 28px;
+  height: 28px;
+  z-index: 100; /* ให้อยู่เหนือสุด */
+  pointer-events: none; /* กันไม่ให้รบกวนการคลิกโลโก้ */
+}
+
+/* มือถือ */
+@media (max-width: 600px) {
+  .df-img { width: 110px; }
+  .df-list { gap: 20px; }
+  .df-scroll { animation-duration: 15s; }
+}
+
+body {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #050505, #0a0a0a 60%, #000 100%);
+  overflow-x: hidden;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Prompt', sans-serif;
+}
+
+/* 🔮 ชั้น Aurora ที่เคลื่อนไหว */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 30% 50%, rgba(0, 81, 255, 0.659), transparent 70%),
+              radial-gradient(circle at 70% 50%, rgba(255, 0, 255, 0.1), transparent 70%);
+  filter: blur(60px);
+  transform: translate(-10%, -10%);
+  animation: auroraFlow 22s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+/* 🌈 เพิ่มเลเยอร์แสงซ้อนบาง ๆ */
+body::after {
+  background: radial-gradient(circle at 40% 60%, rgba(4, 0, 255, 0.844), transparent 70%),
+              radial-gradient(circle at 60% 40%, rgba(218, 218, 218, 0.921), transparent 70%);
+  filter: blur(80px);
+  animation: auroraFlow2 30s ease-in-out infinite alternate;
+}
+
+/* 🔁 แอนิเมชัน Aurora */
+@keyframes auroraFlow {
+  0% { transform: translate(-5%, -5%) scale(1); }
+  50% { transform: translate(10%, 5%) scale(1.05); }
+  100% { transform: translate(-5%, 10%) scale(1); }
+}
+
+@keyframes auroraFlow2 {
+  0% { transform: translate(5%, 10%) scale(1); }
+  50% { transform: translate(-10%, -5%) scale(1.05); }
+  100% { transform: translate(5%, -10%) scale(1); }
+}
+
+/* 🫧 เอฟเฟกต์เบา ๆ เสริมลึก */
+.aurora-overlay {
+  position: fixed;
+  inset: 0;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 2px
+  );
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}
+
 </style>
 </head>
+<div class="aurora-overlay"></div>
 <img src="https://img2.pic.in.th/pic/-SP.jpg" class="shadowed-image" width="500" height="500">
 
 <body>
@@ -404,6 +559,28 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
     </div>
   </div>
 
+</div>
+
+<!-- 🎰 Provider Carousel (Seamless Infinite Loop) -->
+<div class="df-box">
+  <div class="df-scroll">
+    <div class="df-list">
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pg/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pragmaticplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/sa/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/joker/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/evoplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+    </div>
+
+    <!-- duplicate ชุดเดิมเพื่อสร้าง seamless loop -->
+    <div class="df-list">
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pg/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/pragmaticplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/sa/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/joker/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+      <a href="https://auto.spinpro.site/" class="df-item"><img src="https://storage.googleapis.com/luxino-public/provider-images/evoplay/header.png" class="df-img"><img src="https://storage.googleapis.com/luxino-public/icon/icon_tag/hot-anim.gif" class="df-hot"></a>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -495,6 +672,57 @@ const INTERVAL = 3000;
     }
 
     init();
+
+    /* ♾️ ทำให้สไลด์วนไม่รู้จบ */
+document.addEventListener('DOMContentLoaded', () => {
+  const list = document.getElementById('dfList');
+  const clone = list.cloneNode(true);
+  list.parentNode.appendChild(clone);
+});
+
+// 🚫 ป้องกันคลิกขวา
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 🚫 ป้องกันปุ่มบางชุด
+document.onkeydown = function(e) {
+  // F12
+  if (e.keyCode === 123) return false;
+  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+U
+  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) return false;
+  if (e.ctrlKey && e.keyCode === 85) return false;
+};
+
+// 🌀 รีเฟรชเมื่อคลิกขวา (ถ้าอยากใช้โหมดนี้แทน)
+document.addEventListener('contextmenu', e => {
+  e.preventDefault();
+  location.reload(); // รีเฟรชเมื่อคลิกขวา
+});
+
+// 💡 แจ้งเตือนถ้ามีการเปิด Developer Tools
+(function() {
+  let checkDevTools = false;
+  const element = new Image();
+  Object.defineProperty(element, 'id', {
+    get: function() {
+      checkDevTools = true;
+      setTimeout(() => {
+        if (checkDevTools) {
+          alert('DevTools are not allowed 👋🏻');
+          window.location.reload();
+        }
+      }, 500);
+    }
+  });
+  console.log(element);
+})();
+
+setInterval(() => {
+  if (window.outerHeight - window.innerHeight > 200 ||
+      window.outerWidth - window.innerWidth > 200) {
+    document.body.innerHTML = '<h2 style="color:white;text-align:center;">DevTools are not allowed 👋🏻<br>try again harder dude</h2>';
+  }
+}, 1000);
+
 </script>
 </body>
 </html>
