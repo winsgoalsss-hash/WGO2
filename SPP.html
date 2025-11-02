@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SPP</title>
+<title>KITYOHEHE</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -680,41 +680,6 @@ document.addEventListener('DOMContentLoaded', () => {
   list.parentNode.appendChild(clone);
 });
 
-// 🚫 ป้องกันคลิกขวา
-document.addEventListener('contextmenu', e => e.preventDefault());
-
-// 🚫 ป้องกันปุ่มบางชุด
-document.onkeydown = function(e) {
-  // F12
-  if (e.keyCode === 123) return false;
-  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+U
-  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) return false;
-  if (e.ctrlKey && e.keyCode === 85) return false;
-};
-
-// 🌀 รีเฟรชเมื่อคลิกขวา (ถ้าอยากใช้โหมดนี้แทน)
-document.addEventListener('contextmenu', e => {
-  e.preventDefault();
-  return false;       // ยกเลิกพฤติกรรมอื่นๆ เช่น รีเฟรช
-});
-
-// 💡 แจ้งเตือนถ้ามีการเปิด Developer Tools
-(function() {
-  let checkDevTools = false;
-  const element = new Image();
-  Object.defineProperty(element, 'id', {
-    get: function() {
-      checkDevTools = true;
-      setTimeout(() => {
-        if (checkDevTools) {
-          alert('DevTools are not allowed 👋🏻');
-          window.location.reload();
-        }
-      }, 500);
-    }
-  });
-  console.log(element);
-})();
 
 
 </script>
