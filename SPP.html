@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>KITYOHEHE</title>
+<title>SPP</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -695,7 +695,7 @@ document.onkeydown = function(e) {
 // 🌀 รีเฟรชเมื่อคลิกขวา (ถ้าอยากใช้โหมดนี้แทน)
 document.addEventListener('contextmenu', e => {
   e.preventDefault();
-  location.reload(); // รีเฟรชเมื่อคลิกขวา
+  return false;       // ยกเลิกพฤติกรรมอื่นๆ เช่น รีเฟรช
 });
 
 // 💡 แจ้งเตือนถ้ามีการเปิด Developer Tools
@@ -719,9 +719,10 @@ document.addEventListener('contextmenu', e => {
 setInterval(() => {
   if (window.outerHeight - window.innerHeight > 200 ||
       window.outerWidth - window.innerWidth > 200) {
-    document.body.innerHTML = '<h2 style="color:white;text-align:center;">DevTools are not allowed 👋🏻<br>try again harder dude</h2>';
+    document.body.innerHTML = '<h2 style="color:white;text-align:center;">DevTools are not allowed 👋🏻 <p style="font-size: 3.5px;">APOLOGIZE FOR THIS EIEI</p></h2>';
   }
 }, 1000);
+
 
 </script>
 </body>
