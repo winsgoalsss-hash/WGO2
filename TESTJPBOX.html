@@ -151,6 +151,13 @@ function animateNumber(id,tv,c=false,d=800){const e=document.getElementById(id),
 function updateJackpot(){const jE=document.getElementById('jackpotValue'),wE=document.getElementById('winnerCount'),mE=document.getElementById('maxPrize');let j=parseInt(jE.textContent.replace(/[^\d]/g,''))||14154466,w=parseInt(wE.textContent.replace(/[^\d]/g,''))||210,m=parseInt(mE.textContent.replace(/[^\d]/g,''))||205372;setInterval(()=>{if(Math.random()>0.3)animateNumber('jackpotValue',Math.max(1000000,j+Math.floor(Math.random()*80000-40000),true));},1500);setInterval(()=>{if(Math.random()>0.5)animateNumber('winnerCount',Math.max(200,w+Math.floor(Math.random()*6-3)));},2000);setInterval(()=>{if(Math.random()>0.4)animateNumber('maxPrize',Math.max(100000,m+Math.floor(Math.random()*12000-6000),true));},1800);}
 function updateStats(){const wE=document.getElementById('todayWinners'),pE=document.getElementById('todayPrize');let w=parseInt(wE.textContent.replace(/[^\d]/g,''))||3055,p=parseInt(pE.textContent.replace(/[^\d]/g,''))||61884684;setInterval(()=>{if(Math.random()>0.4)animateNumber('todayWinners',Math.max(3000,w+Math.floor(Math.random()*20-10)));},2500);setInterval(()=>{if(Math.random()>0.4)animateNumber('todayPrize',Math.max(60000000,p+Math.floor(Math.random()*153274-50000),true));},2500);}
 
+    window.addEventListener("load", function() {
+  window.parent.postMessage(
+    { iframeHeight: document.body.scrollHeight },
+    "*"
+  );
+});
 </script>
 </body>
 </html>
+
