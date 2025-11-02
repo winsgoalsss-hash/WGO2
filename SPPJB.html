@@ -16,8 +16,9 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 .stat-box{flex:1;background:rgba(0,0,0,0.6);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(0, 115, 255, 0.4);transition:box-shadow 0.3s ease}
 .stat-box.updated{box-shadow:0 0 15px rgba(0, 115, 255, 0.5)}
 .stat-icon{font-size:1.2rem;color:#ffffff;margin-bottom:5px}
+.stat-icon2{font-size:0.8rem;border-radius:1200px;color:#4add00;margin-bottom:5px;}
 .stat-value{color:#FFF;font-size:1.1rem;font-weight:600;margin-bottom:2px;transition:color 0.3s ease}
-.stat-value.updated{color:#ffe1357b}
+.stat-value.updated{color:#ffd900e6}
 .stat-label{color:#E0E0E0;font-size:0.8rem}
 .jackpot-container{background:rgba(233, 233, 233, 0.85);border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0, 115, 255, 0.3)}
 .jackpot-title{text-align:center;font-size:1.6rem;font-weight:600;color:#000000;margin-bottom:15px}
@@ -46,6 +47,24 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 @media(max-width:480px){body{padding:10px}.stat-box{padding:8px}.stat-icon{font-size:1rem;margin-bottom:3px}.stat-value{font-size:0.9rem}.stat-label{font-size:0.7rem}.jackpot-container{padding:15px}.jackpot-title{font-size:1.4rem}.jackpot-amount{padding:15px;margin-bottom:12px}.amount-value{font-size:1.8rem}.info-item{padding:12px}.info-label{font-size:0.8rem}.info-value{font-size:1rem}.coin{width:28px;height:28px;font-size:12px}}
 
 /* ===== Additional: small reset for FA icons if unavailable ===== */
+
+.stat-icon2 i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #4add00;
+  text-shadow: none;
+  box-shadow: 0 0 10px rgba(74, 221, 0, 0.8),
+              0 0 20px rgba(74, 221, 0, 0.6),
+              0 0 30px rgba(74, 221, 0, 0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,255,51,0.3); }
+  50% { box-shadow: 0 0 15px rgba(0,255,51,0.8); }
+}
 </style>
 </head>
 <body>
@@ -62,7 +81,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
                     <div class="page-container">
                       <div class="header-stats">
                         <div class="stat-box">
-                          <div class="stat-icon"><i class="fas fa-circle"></i></div>
+                          <div class="stat-icon2"><i class="fas fa-circle"></i></div>
                           <div class="stat-value" id="onlineCount">0</div>
                           <div class="stat-label">ออนไลน์</div>
                         </div>
@@ -206,5 +225,4 @@ updateJackpot();updateStats();
 </script>
 </body>
 </html>
-
 
