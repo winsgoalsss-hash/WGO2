@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ARESS77 — Final</title>
+<title>SPP — Final</title>
 <!-- Google Fonts as requested (Kanit + Prompt) -->
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Font Awesome for icons -->
@@ -58,6 +58,16 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 @keyframes blink {0% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}50% {opacity: 0.5;box-shadow: 0 0 20px rgba(46, 196, 84, 0.3);}100% {opacity: 1;box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);}}
 @keyframes pulse {0% {transform: scale(0.98);opacity: 0.5;}50% {transform: scale(1.02);opacity: 0.3;}100% {transform: scale(0.98);opacity: 0.5;}}
 
+.shadowed-image {
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shadowed-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+}
 </style>
 <body>
 
@@ -73,7 +83,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
         </div>
       </div>
       <br>
-      <img src="https://img2.pic.in.th/pic/lSP.jpg" class="shadowed-image" width="500" style="border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.3);max-width:90%;margin-top:20px;" alt="banner">
+      <img src="https://img2.pic.in.th/pic/lSP.jpg" class="shadowed-image" width="500" style="border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.3);max-width:90%;margin-top:10px;margin:auto;" alt="banner">
       <br>
 
       <section class="elementor-section elementor-top-section elementor-element elementor-element-e84518a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e84518a" data-element_type="section">
