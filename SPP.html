@@ -416,71 +416,8 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   .df-scroll { animation-duration: 15s; }
 }
 
-body {
-  position: relative;
-  background: radial-gradient(circle at 50% 50%, #050505, #0a0a0a 60%, #000 100%);
-  overflow-x: hidden;
-  min-height: 100vh;
-  color: #fff;
-  font-family: 'Prompt', sans-serif;
-}
-
-/* 🔮 ชั้น Aurora ที่เคลื่อนไหว */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle at 30% 50%, rgba(0, 81, 255, 0.659), transparent 70%),
-              radial-gradient(circle at 70% 50%, rgba(255, 0, 255, 0.1), transparent 70%);
-  filter: blur(60px);
-  transform: translate(-10%, -10%);
-  animation: auroraFlow 22s ease-in-out infinite alternate;
-  z-index: -2;
-}
-
-/* 🌈 เพิ่มเลเยอร์แสงซ้อนบาง ๆ */
-body::after {
-  background: radial-gradient(circle at 40% 60%, rgba(4, 0, 255, 0.844), transparent 70%),
-              radial-gradient(circle at 60% 40%, rgba(218, 218, 218, 0.921), transparent 70%);
-  filter: blur(80px);
-  animation: auroraFlow2 30s ease-in-out infinite alternate;
-}
-
-/* 🔁 แอนิเมชัน Aurora */
-@keyframes auroraFlow {
-  0% { transform: translate(-5%, -5%) scale(1); }
-  50% { transform: translate(10%, 5%) scale(1.05); }
-  100% { transform: translate(-5%, 10%) scale(1); }
-}
-
-@keyframes auroraFlow2 {
-  0% { transform: translate(5%, 10%) scale(1); }
-  50% { transform: translate(-10%, -5%) scale(1.05); }
-  100% { transform: translate(5%, -10%) scale(1); }
-}
-
-/* 🫧 เอฟเฟกต์เบา ๆ เสริมลึก */
-.aurora-overlay {
-  position: fixed;
-  inset: 0;
-  background: repeating-radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.02) 0,
-    rgba(255, 255, 255, 0.02) 1px,
-    transparent 2px
-  );
-  opacity: 0.3;
-  z-index: -1;
-  pointer-events: none;
-}
-
 </style>
 </head>
-<div class="aurora-overlay"></div>
 <img src="https://img2.pic.in.th/pic/-SP.jpg" class="shadowed-image" width="500" height="500">
 
 <body>
@@ -498,23 +435,16 @@ body::after {
 
 
   <!-- 🔹 ปุ่ม Contact สำหรับลิงก์ไปเว็บภายนอก -->
-<div class="Contact-button-container" style="text-align:center; margin-top: 15px;">
-  <a href="https://auto.spinpro.site/register?uplineid=NA==" 
-     target="Contact" 
-     rel="Contact" 
-     class="link-button">
-     <div>สมัครสมาชิกคลิ๊กเลย</div>
-  </a>
-</div>
+
+<a href="https://auto.spinpro.site/register?uplineid=NA%3D%3D"
+   class="link-button" target="_blank" rel="noopener noreferrer">
+   สมัครสมาชิกคลิ๊กเลย
+</a>
 <br>
-<div class="register-button-container" style="text-align:center; margin-top: 15px;">
-  <a href="https://auto.spinpro.site/register?uplineid=NA==" 
-     target="Register" 
-     rel="noopener noreferrer" 
-     class=" Ctlink-button">
-     <div>ติดต่อสอบถามโปรโมชชั่น 📢</div>
-  </a>
-</div>
+<a href="https://auto.spinpro.site/register?uplineid=NA%3D%3D"
+   class="Ctlink-button" target="_blank" rel="noopener noreferrer">
+   ติดต่อสอบถามโปรโมชชั่น 📢
+</a>
   <br>
   <img src="https://img2.pic.in.th/pic/lSP.jpg" class="shadowed-image" width="500" height="500">
   <br>
