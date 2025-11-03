@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Kanit',sans-serif}
+.jackpot-container{max-width:600px;margin:auto;background:rgba(233,233,233,0.85);border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0,115,255,0.3)}
+.jackpot-title{text-align:center;font-size:1.6rem;font-weight:600;color:#000;margin-bottom:15px}
+.jackpot-amount{background:linear-gradient(45deg,#00124e,#004cff);border-radius:15px;padding:20px;text-align:center;position:relative;cursor:pointer;margin-bottom:15px;overflow:hidden}
+.amount-label{color:#ccc;font-size:1rem}
+.amount-value{color:#fff;font-size:2.2rem;font-weight:700}
+.jackpot-info{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.info-item{background:#f5f5f5;border-radius:12px;padding:15px;text-align:center}
+.info-label{color:#0054d3;font-size:0.9rem;margin-bottom:5px}
+.info-value{color:#2a1200;font-size:1.2rem;font-weight:600}
+.coin{position:absolute;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold;color:#fff;background:linear-gradient(45deg,#ff8c00,#ffd700)}
+.coin-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+</style>
+</head>
+<body>
+<div class="jackpot-container">
+  <h1 class="jackpot-title">แจ็คพอตรวม</h1>
+  <div class="jackpot-amount" onclick="burstCoins(event)">
+    <div class="amount-label">มูลค่ารวม</div>
+    <div class="amount-value" id="jackpotValue">14,154,466</div>
+    <div class="coin-container"></div>
+  </div>
+  <div class="jackpot-info">
+    <div class="info-item"><div class="info-label">ผู้ชนะล่าสุด</div><div class="info-value" id="winnerCount">210</div></div>
+    <div class="info-item"><div class="info-label">รางวัลสูงสุด</div><div class="info-value" id="maxPrize">205,372</div></div>
+  </div>
+</div>
+
+<script src="sync.js"></script>
+</body>
+</html>
