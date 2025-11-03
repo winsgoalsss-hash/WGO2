@@ -10,7 +10,6 @@
 * {
       margin: 0px;
       padding: 0px;
-      margin-bottom: 0px;
       box-sizing: border-box;
       font-family: 'Prompt', sans-serif;
     }
@@ -33,9 +32,7 @@
       overflow: hidden;
       border: 1px solid rgba(180, 200, 255, 0.3);
       backdrop-filter: blur(8px);
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: -15px;
+      margin: auto;
     }
 
     .withdraw-header {
@@ -112,13 +109,12 @@
       padding: 8px 0 10px;
       border-top: 1px solid rgba(200, 220, 255, 0.4);
       background: #FAFCFF;
+      margin-bottom: 0;
     }
-
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(8px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -132,8 +128,7 @@
             <div class="withdraw-footer">
               อัปเดตเมื่อ: <span id="lastUpdated"></span>
             </div>
-          </div>
-        
+          </div>          
     <script>
     /* WD" */
 const INTERVAL = 3000;
@@ -146,18 +141,14 @@ const BANKS = [
   { name: "SCB", img: "https://img2.pic.in.th/pic/SCBb0fa8bfb34956394.png" },
   { name: "TTB", img: "https://img5.pic.in.th/file/secure-sv1/TTB3c0909ac0f482074.png" },
 ];
-
 const list = document.getElementById('withdrawList');
 const lastUpdated = document.getElementById('lastUpdated');
-
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function randomBank() {
   return BANKS[random(0, BANKS.length - 1)];
 }
-
 function createItem() {
   const { name, img } = randomBank();
   const user = `SPP${random(10000, 99999)}xx`;
@@ -165,7 +156,6 @@ function createItem() {
   .toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const now = new Date();
   const time = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
   const div = document.createElement('div');
   div.className = 'withdraw-item';
   div.innerHTML = `
@@ -177,23 +167,18 @@ function createItem() {
     </div>
     <div class="status processing"><i class="fas fa-spinner"></i> กำลังโอน...</div>
   `;
-
   list.prepend(div);
-
   setTimeout(() => {
     const s = div.querySelector('.status');
     s.classList.remove('processing');
     s.innerHTML = `<i class="fas fa-check-circle"></i> โอนแล้ว`;
   }, 2018);
-
   if (list.children.length > MAX) list.removeChild(list.lastChild);
 }
-
 function updateTime() {
   const now = new Date();
   lastUpdated.textContent = now.toLocaleString('th-TH', { dateStyle: 'short', timeStyle: 'short' });
 }
-
 function init() {
   for (let i = 0; i < MAX; i++) createItem();
   updateTime();
@@ -202,11 +187,7 @@ function init() {
     updateTime();
   }, INTERVAL);
 }
-
 init();
-
-
 </script>
 </body>
-
 </html>
