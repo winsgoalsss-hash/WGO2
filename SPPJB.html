@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SPPl</title>
+<title>ARESS77 — Final</title>
 <!-- Google Fonts as requested (Kanit + Prompt) -->
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* ======= Original styles preserved ======= */*{margin:0;padding:0;box-sizing:border-box;font-family:'Kanit',sans-serif}
+/* ======= Original styles preserved ======= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Kanit',sans-serif}
 body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;padding:15px}
 .page-container{max-width:600px;margin:0 auto;width:100%}
-.header-stats{display:flex;gap:7px;margin-bottom:15px}
+.header-stats{display:flex;gap:10px;margin-bottom:15px}
 .stat-box{flex:1;background:rgba(0,0,0,0.6);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(0, 115, 255, 0.4);transition:box-shadow 0.3s ease}
+.stat-icon2{font-size:0.8rem;border-radius:1200px;color:#4add00;margin-bottom:5px;}
 .stat-box.updated{box-shadow:0 0 15px rgba(0, 115, 255, 0.5)}
 .stat-icon{font-size:1.2rem;color:#ffffff;margin-bottom:5px}
-.stat-icon2{font-size:0.8rem;border-radius:1200px;color:#4add00;margin-bottom:5px;}
 .stat-value{color:#FFF;font-size:1.1rem;font-weight:600;margin-bottom:2px;transition:color 0.3s ease}
-.stat-value.updated{color:#ffd900e6}
+.stat-value.updated{color:#0097d3}
 .stat-label{color:#E0E0E0;font-size:0.8rem}
-.jackpot-container{background:rgba(233, 233, 233, 0.85);border-radius:20px;padding:10px;box-shadow:0 10px 30px rgba(0, 115, 255, 0.3)}
+.jackpot-container{background:rgba(233, 233, 233, 0.85);border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0, 115, 255, 0.3)}
 .jackpot-title{text-align:center;font-size:1.6rem;font-weight:600;color:#000000;margin-bottom:15px}
 .jackpot-amount{background:linear-gradient(45deg,#00124e,#004cff);border-radius:15px;padding:20px;text-align:center;position:relative;cursor:pointer;margin-bottom:15px;overflow:hidden;box-shadow:inset 0 0 10px rgba(255,255,255,0.2),0 5px 15px rgba(0,0,0,0.3);transition:box-shadow 0.3s ease}
 .jackpot-amount.updated{box-shadow:inset 0 0 10px rgba(0, 115, 255, 0.5),0 5px 20px rgba(0, 115, 255, 0.5)}
@@ -46,8 +47,6 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
 .coin-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
 @media(max-width:480px){body{padding:10px}.stat-box{padding:8px}.stat-icon{font-size:1rem;margin-bottom:3px}.stat-value{font-size:0.9rem}.stat-label{font-size:0.7rem}.jackpot-container{padding:15px}.jackpot-title{font-size:1.4rem}.jackpot-amount{padding:15px;margin-bottom:12px}.amount-value{font-size:1.8rem}.info-item{padding:12px}.info-label{font-size:0.8rem}.info-value{font-size:1rem}.coin{width:28px;height:28px;font-size:12px}}
 
-/* ===== Additional: small reset for FA icons if unavailable ===== */
-
 .stat-icon2 i {
   display: inline-block;
   width: 16px;
@@ -65,20 +64,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
   0%, 100% { box-shadow: 0 0 10px rgba(0,255,51,0.3); }
   50% { box-shadow: 0 0 15px rgba(0,255,51,0.8); }
 }
-
-iframe {
-  display: block;
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;
-}
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+/* ===== Additional: small reset for FA icons if unavailable ===== */
 </style>
 </head>
 <body>
