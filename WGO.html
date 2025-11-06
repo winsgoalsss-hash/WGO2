@@ -101,12 +101,12 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
                         </div>
                         <div class="stat-box">
                           <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-                          <div class="stat-value" id="todayWinners">4,397</div>
+                          <div class="stat-value" id="todayWinners">3,055</div>
                           <div class="stat-label">ผู้ชนะวันนี้</div>
                         </div>
                         <div class="stat-box">
                           <div class="stat-icon"><i class="fas fa-coins"></i></div>
-                          <div class="stat-value" id="todayPrize">94,872,631</div>
+                          <div class="stat-value" id="todayPrize">32,541,937</div>
                           <div class="stat-label">รางวัลวันนี้</div>
                         </div>
                       </div>
@@ -114,7 +114,7 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
                         <h1 class="jackpot-title">แจ็คพอตรวม</h1>
                         <div class="jackpot-amount" onclick="burstCoins(event)" aria-live="polite">
                           <div class="amount-label">มูลค่ารวม</div>
-                          <div class="amount-value" id="jackpotValue">23,720,509</div>
+                          <div class="amount-value" id="jackpotValue">14,154,466</div>
                           <div class="coin-container">
                             <!-- initial coins preserved (trimmed for brevity in source) -->
 
@@ -133,8 +133,8 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
                           </div>
                         </div>
                         <div class="jackpot-info">
-                          <div class="info-item"><div class="info-label">ผู้ชนะล่าสุด</div><div class="info-value" id="winnerCount">337/div></div>
-                          <div class="info-item"><div class="info-label">รางวัลสูงสุด</div><div class="info-value" id="maxPrize">745,493</div></div>
+                          <div class="info-item"><div class="info-label">ผู้ชนะล่าสุด</div><div class="info-value" id="winnerCount">210</div></div>
+                          <div class="info-item"><div class="info-label">รางวัลสูงสุด</div><div class="info-value" id="maxPrize">205,372</div></div>
                         </div>
                       </div>
                     </div>
@@ -151,21 +151,34 @@ body{background:linear-gradient(135deg,#ffffff00,#ffffff00);color:#FFEBCD;line-h
     </div>
     
 </section>
+
+<!-- ===== Embedded online-counter widget (your provided code) ===== -->
+<!-- This widget runs in the same page and its value will be the single source of truth for #onlineCount -->
 <div style="display:none;">
+<!-- Hidden copy of the counter UI (not visible) but its script will control the value -->
 <div id="external-online-counter">
+    <!-- intentionally minimal; the script below manages the number -->
     <span id="externalOnlineValue">793894</span>
 </div>
 </div>
+
+<!-- ===== Synchronization & scripts ===== -->
 <script>
+/* === Counter script (from your provided widget) === */
+// Configuration (kept as in your widget)
 const MIN_USERS = 504084;
 const MAX_USERS = 850602;
 const UPDATE_INTERVAL = 3000;   // ms
 const ANIMATION_DURATION = 1200; // ms
+
+// Shared state
 window.globalOnlineUsers = Math.floor((MIN_USERS + MAX_USERS) / 2);
 let currentUsers = window.globalOnlineUsers;
 let isAnimating = false;
+
 const counterEl_local = document.createElement('div'); // not used visually
 const counterDisplay = document.getElementById('externalOnlineValue');
+
 function animateCounter(targetValue){
     if(isAnimating) return;
     isAnimating = true;
@@ -195,6 +208,7 @@ function animateCounter(targetValue){
         }
     }, frameDuration);
 }
+
 function updateOnlineCounter(){
     const randomChange = Math.floor(Math.random() * 12) - 6;
     let newTarget = currentUsers + randomChange;
@@ -223,8 +237,8 @@ function animateNumber(id,tv,c=false,d=800){const e=document.getElementById(id),
 function createCoin(x,y,c,r,cl=false){const coin=document.createElement('div');coin.className='coin golden'+(cl?' collect':'');coin.innerHTML='฿';if(cl){let cx=r.width/2,cy=r.height/2;coin.style.cssText=`left:${x}px;top:${y}px;--sx:${x}px;--sy:${y}px;--tx:${cx-x}px;--ty:${cy-y}px`}else{let tx=(Math.random()-0.5)*300,ty=(Math.random()-0.5)*300;coin.style.cssText=`left:${x}px;top:${y}px;--tx:${tx}px;--ty:${ty}px`}c.appendChild(coin);setTimeout(()=>coin.remove(),2000)}
 function burstCoins(e){const r=e.target.getBoundingClientRect(),c=e.target.querySelector('.coin-container');for(let i=0;i<40;i++)setTimeout(()=>createCoin(Math.random()*r.width,Math.random()*r.height,c,r),i*20)}
 function collectCoins(){const b=document.querySelector('.jackpot-amount'),r=b.getBoundingClientRect(),c=b.querySelector('.coin-container');for(let i=0;i<12;i++)setTimeout(()=>{let a=Math.random()*2*Math.PI,m=Math.min(r.width,r.height)*0.7,x=Math.cos(a)*m+r.width/2,y=Math.sin(a)*m+r.height/2;createCoin(x,y,c,r,true)},i*100)}
-function updateStats(){const o=parseInt(document.getElementById('onlineCount').textContent.replace(/[^\\d]/g,''))||0,w=parseInt(document.getElementById('todayWinners').textContent.replace(/[^\\d]/g,''))||4397,p=parseInt(document.getElementById('todayPrize').textContent.replace(/[^\\d]/g,''))||94872631;setInterval(()=>{if(Math.random()>0.3)animateNumber('onlineCount',Math.max(0,o+Math.floor(Math.random()*400-200)))},120000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayWinners',Math.max(4400,w+Math.floor(Math.random()*20-10)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayPrize',Math.max(100000000,p+Math.floor(Math.random()*153274-50000),true))},1000)}
-function updateJackpot(){const j=parseInt(document.getElementById('jackpotValue').textContent.replace(/[^\\d]/g,''))||23720509,w=parseInt(document.getElementById('winnerCount').textContent.replace(/[^\\d]/g,''))||337,m=parseInt(document.getElementById('maxPrize').textContent.replace(/[^\\d]/g,''))||745493;setInterval(()=>{if(Math.random()>0.3)animateNumber('jackpotValue',Math.max(30000000,j+Math.floor(Math.random()*80000-40000),true))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('winnerCount',Math.max(215,w+Math.floor(Math.random()*6-3)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('maxPrize',Math.max(800000,m+Math.floor(Math.random()*12000-6000),true))},1000)}
+function updateStats(){const o=parseInt(document.getElementById('onlineCount').textContent.replace(/[^\\d]/g,''))||0,w=parseInt(document.getElementById('todayWinners').textContent.replace(/[^\\d]/g,''))||3056,p=parseInt(document.getElementById('todayPrize').textContent.replace(/[^\\d]/g,''))||32541937;setInterval(()=>{if(Math.random()>0.3)animateNumber('onlineCount',Math.max(0,o+Math.floor(Math.random()*400-200)))},120000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayWinners',Math.max(3000,w+Math.floor(Math.random()*20-10)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('todayPrize',Math.max(31000000,p+Math.floor(Math.random()*153274-50000),true))},1000)}
+function updateJackpot(){const j=parseInt(document.getElementById('jackpotValue').textContent.replace(/[^\\d]/g,''))||14420509,w=parseInt(document.getElementById('winnerCount').textContent.replace(/[^\\d]/g,''))||217,m=parseInt(document.getElementById('maxPrize').textContent.replace(/[^\\d]/g,''))||219435;setInterval(()=>{if(Math.random()>0.3)animateNumber('jackpotValue',Math.max(8888888,j+Math.floor(Math.random()*80000-40000),true))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('winnerCount',Math.max(215,w+Math.floor(Math.random()*6-3)))},1000);setInterval(()=>{if(Math.random()>0.3)animateNumber('maxPrize',Math.max(200000,m+Math.floor(Math.random()*12000-6000),true))},1000)}
 updateJackpot();updateStats();
 </script>
 </body>
