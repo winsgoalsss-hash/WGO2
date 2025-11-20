@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combined Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- 🟦 นำ <style> ของ BLOCK1 วางไว้ตรงนี้ -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Prompt', sans-serif;
+    }
+
+    .online-counter {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        width: fit-content;
+        margin: auto;
+    }
+
+    .online-counter:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .online-pulse {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(46, 196, 84, 0.1) 0%, rgba(46, 196, 84, 0) 70%);
+        border-radius: 15px;
+        animation: pulse 2s ease-out infinite;
+        top: 0;
+        left: 0;
+    }
+
+    .counter-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-right: 20px;
+        border-right: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .counter-right {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+
+    .counter-icon {
+        width: 35px;
+        height: 35px;
+        filter: invert(57%) sepia(53%) saturate(638%) hue-rotate(93deg) brightness(95%) contrast(87%);
+    }
+
+    .counter-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2EC454;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .online-indicator {
+        width: 8px;
+        height: 8px;
+        background-color: #2EC454;
+        border-radius: 50%;
+        display: inline-block;
+        animation: blink 1.5s ease infinite;
+        margin-left: 5px;
+        box-shadow: 0 0 10px rgba(46, 196, 84, 0.5);
+    }
+
+    .counter-label {
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .counter-sublabel {
+        font-size: 12px;
+        color: #666;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; box-shadow: 0 0 10px rgba(46, 196, 84, 0.5); }
+        50% { opacity: 0.5; box-shadow: 0 0 20px rgba(46, 196, 84, 0.3); }
+        100% { opacity: 1; box-shadow: 0 0 10px rgba(46, 196, 84, 0.5); }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.98); opacity: 0.5; }
+        50% { transform: scale(1.02); opacity: 0.3; }
+        100% { transform: scale(0.98); opacity: 0.5; }
+    }
+
+    @media (max-width: 768px) {
+        .online-counter {
+            padding: 12px 20px;
+            gap: 12px;
+        }
+
+        .counter-number {
+            font-size: 24px;
+        }
+
+        .counter-label {
+            font-size: 14px;
+        }
+
+        .counter-sublabel {
+            font-size: 11px;
+        }
+    }
+</style>
+
+<!-- 🟩 ต่อด้วย <style> ของ BLOCK2 BUTTON -->
+<style>
+    body {
+      margin: 15px;
+      padding: auto;
+      font-family: 'Kanit', sans-serif;
+      background: transparent;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      height: auto;
+    }
+
+    .button-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: auto;
+    }
+
+    /* ปุ่มสมัครสมาชิก */
+    .link-button {
+      display: inline-block;
+      padding: 15px 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #00baff, #0077ff);
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(0,170,255,0.4);
+      transition: 0.3s;
+      animation: pulse-glow 2s ease-in-out infinite, float 1.7s ease-in-out infinite, shine 2.2s infinite;
+    }
+
+    .link-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,170,255,0.7);
+    }
+
+    /* ปุ่มติดต่อ */
+    .Ctlink-button {
+      display: inline-block;
+      padding: 15px 60px;
+      font-size: 1.1rem;
+      font-weight: 450;
+      color: #fff;
+      background: linear-gradient(135deg, #4dff03, #16c000d8);
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(38, 255, 0, 0.4);
+      transition: 0.3s;
+      animation: Ctpulse-glow 2s ease-in-out infinite, shine 0.8s infinite;
+    }
+
+    .Ctlink-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgb(26, 236, 11);
+    }
+
+    /* แอนิเมชัน */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,170,255,0.3); }
+      50% { box-shadow: 0 0 15px rgba(0,170,255,0.8); }
+    }
+    @keyframes Ctpulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,255,51,0.3); }
+      50% { box-shadow: 0 0 15px rgba(0,255,51,0.8); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+@keyframes shine {
+  0% { left: -120%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+}
+</style>
+
+<style>
+    /* ==== CSS layout เพิ่มเติม (block1-wrapper / block2-wrapper) ==== */
+    .block1-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.block2-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+    </style>
+
+</head>
+
+<body>
+
+<!-- 🟦 BLOCK1 HTML (เฉพาะส่วนใน <body> ของไฟล์ BLOCK1) -->
+    <div class="block1-wrapper">
+    <div class="online-counter">
+        <div class="online-pulse"></div>
+        <div class="counter-left">
+            <img class="counter-icon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E" alt="online users">
+            <div class="counter-number">
+                <span id="onlineCounter">793,894</span>
+                <div class="online-indicator"></div>
+            </div>
+        </div>
+        <div class="counter-right">
+            <div class="counter-label">ผู้ใช้ออนไลน์
+</div>
+            <div class="counter-sublabel">กำลังเล่นอยู่ขณะนี้</div>
+        </div>
+    </div>
+    </div>
+<!-- 🟩 BLOCK2 HTML (เฉพาะส่วนใน <body> ของไฟล์ BLOCK2 BUTTON) -->
+    <div class="block2-wrapper">
+<div class="button-section">
+    <!-- 🔹 ปุ่มสมัครสมาชิก (ยิง event Purchase) -->
+    <a href="https://lin.ee/bPi5amn"
+       class="link-button"
+       onclick="trackPurchase(event)">
+       สมัครสมาชิกคลิ๊กเลย
+    </a>
+    <!-- 🔹 ปุ่มติดต่อสอบถาม (ยิง event Contact) -->
+    <a href="https://lin.ee/XSp8hdP"
+       class="Ctlink-button"
+       onclick="trackContact(event)">
+       ช่องทางติดต่อ (สำรอง) 📢
+    </a>
+</div>
+    </div>
+<!-- 🟦 BLOCK1 SCRIPT -->
+<script>
+// --- ⬇️ นี่คือสคริปต์ที่เขียนขึ้นมาใหม่ทั้งหมด ⬇️ ---
+/* === ตั้งค่า === */
+const MIN_USERS = 504084;
+const MAX_USERS = 950602;
+const UPDATE_INTERVAL = 3000;   // เวลาในการสุ่มเลขใหม่ (ms)
+const ANIMATION_DURATION = 2940; // ระยะเวลาที่ใช้ในการเคลื่อนไหวของตัวเลข (ms)
+
+/* === ฟังก์ชันหลัก === */
+const counterEl = document.getElementById('onlineCounter');
+
+// กำหนดให้ตัวแปรเก็บค่าปัจจุบันเป็น "จำนวนเต็ม" เสมอ
+let currentUsers = Math.floor((MIN_USERS + MAX_USERS) / 2);
+let isAnimating = false; // ตัวแปรป้องกัน animation ซ้อนกัน
+
+function animateCounter(targetValue) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const startValue = currentUsers;
+    const range = targetValue - startValue;
+    const frameDuration = 20; // อัปเดตทุก 20ms เพื่อความลื่นไหล
+    const totalFrames = Math.ceil(ANIMATION_DURATION / frameDuration);
+    let currentFrame = 0;
+
+    const timer = setInterval(() => {
+        currentFrame++;
+        const progress = currentFrame / totalFrames;
+        
+        // **หัวใจของการแก้ไข**: คำนวณค่าจาก "จุดเริ่มต้น" และ "ความคืบหน้า"
+        // ไม่มีการบวกค่าทศนิยมสะสม ทำให้ไม่มีข้อผิดพลาด
+        const calculatedValue = startValue + (range * progress);
+
+        // **จุดสำคัญ**: ปัดเศษเป็นจำนวนเต็ม "ทุกครั้ง" ก่อนแสดงผล
+        const displayValue = Math.round(calculatedValue);
+        counterEl.textContent = displayValue.toLocaleString();
+
+        if (currentFrame >= totalFrames) {
+            clearInterval(timer);
+            // เมื่อจบ animation ให้ใช้ค่าเป้าหมายที่แน่นอนและเป็นจำนวนเต็ม
+            currentUsers = targetValue;
+            counterEl.textContent = currentUsers.toLocaleString();
+            isAnimating = false;
+        }
+    }, frameDuration);
+}
+
+function updateOnlineCounter() {
+    // สุ่มค่าที่จะเปลี่ยนแปลง
+    const randomChange = Math.floor(Math.random() * 32) - 61; // สุ่มค่าระหว่าง -15ถึง +9
+    let newTarget = currentUsers + randomChange;
+
+    // ตรวจสอบไม่ให้ค่าเกินช่วงที่กำหนด
+    newTarget = Math.max(MIN_USERS, Math.min(MAX_USERS, newTarget));
+    
+    // ทำให้แน่ใจว่าค่าเป้าหมายเป็นจำนวนเต็ม
+    newTarget = Math.floor(newTarget);
+
+    if (newTarget !== currentUsers) {
+        animateCounter(newTarget);
+    }
+}
+
+// เริ่มการทำงาน
+counterEl.textContent = currentUsers.toLocaleString();
+setInterval(updateOnlineCounter, UPDATE_INTERVAL);
+</script>
+
+<!-- 🟩 BLOCK2 SCRIPT -->
+<script>
+    // ✅ ฟังก์ชันยิง Event “Purchase”
+    function trackPurchase(event) {
+      event.preventDefault();
+      fbq('track', 'Purchase', {currency: 'VND', value: 0});
+      setTimeout(function() {
+        window.open('https://lin.ee/bPi5amn', '_blank');
+      }, 300); // หน่วงเวลา 0.3 วิ เพื่อให้ Pixel ยิงเสร็จ
+    }
+
+    // ✅ ฟังก์ชันยิง Event “Contact”
+    function trackContact(event) {
+      event.preventDefault();
+      fbq('track', 'Contact');
+      setTimeout(function() {
+        window.open('https://lin.ee/XSp8hdP', '_blank');
+      }, 300);
+    }
+</script>
+</body>
+</html>
