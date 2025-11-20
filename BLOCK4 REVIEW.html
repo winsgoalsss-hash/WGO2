@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Element Combine</title>
+
+
+</head>
+<body>
+
+<!-- ====== OUTER HTML ที่ให้มา (ไม่มีการแก้ไขใด ๆ) ====== -->
+<div class="_root_40wqq_1" style="background: rgba(255, 255, 255, 0);"><div class="_content_40wqq_7" style="margin: 0px; padding: 8px 16px;"><div data-block="68b662f0d780307a72d458bf" data-block-kind="CustomCode" id="block-68b662f0d780307a72d458bf" class="_root_1s6il_1"><div><div class="Jlm-mXPE" style="margin: 0px auto; padding: 8px 16px;"><div data-block="6814c348694da63764a19481" data-block-kind="CustomCode" id="block-6814c348694da63764a19481" class="v+MRynnB"><div>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .comment-box {
+      width: 100%;
+      max-width: 580px;
+      background: rgba(0, 5, 0, 0.80);
+      border: 3px solid rgba(40, 104, 214, 0.5);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 0 5px #2888d6;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .led-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #4970ff, transparent);
+      background-size: 200px;
+      animation: ledMarquee 2s linear infinite;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    @keyframes ledMarquee {
+      0% { background-position: -200px; }
+      100% { background-position: 200px; }
+    }
+
+    .comment {
+      display: flex;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 10px;
+      margin-bottom: 10px;
+      position: relative;
+      opacity: 1;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .comment.pop {
+      animation: flashPop 0.6s ease, fadeIn 0.6s ease;
+    }
+
+    @keyframes flashPop {
+      0% { box-shadow: 0 0 0px #0ff; transform: scale(1); }
+      50% { box-shadow: 0 0 10px #19c2ff, 0 0 20px #289cd6; transform: scale(1.02); }
+      100% { box-shadow: 0 0 0px #2890d6; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .comment img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .comment .text {
+      color: #000000;
+      flex: 1;
+      min-width: 0;
+      
+    }
+
+    .comment .name {
+      font-weight: bold;
+      font-size: 14px;
+      color: rgb(0, 142, 185);
+    }
+
+    .comment .stars {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    font-size: 12px;    
+    text-shadow:
+    0 0 2px rgb(255, 217, 0),
+    0 0 5px rgb(255, 217, 0),
+    0 0 10px rgb(255, 230, 0),
+    0 0 20px rgb(255, 230, 0);
+    }
+
+    .comment .content {
+      font-size: 12px;
+      margin-top: 5px;      
+      word-break: break-word;      
+    }
+
+    @keyframes pulse-glow3 {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 221, 0, 0.4); }
+  50% { box-shadow: 0 0 15px rgba(255, 196, 0, 0.925); }
+    }
+  </style>
+
+
+  <div class="comment-box" id="comment-box">
+    <div class="led-strip"></div>
+  <div class="comment">
+        <img src="https://i.postimg.cc/W11yM25M/Profile-Picture-3.png" alt="ฟาง">
+        <div class="text">
+          <div class="name">ฟาง</div>
+          <div class="stars">★★★★★</div>
+          <div class="content">ถอนง่าย ประทับใจมาก บริการดี</div>
+        </div>
+      </div><div class="comment">
+        <img src="https://i.postimg.cc/dtBXk7js/Profile-Picture-2.png" alt="จะจ๋า">
+        <div class="text">
+          <div class="name">จะจ๋า</div>
+          <div class="stars">★★★★★</div>
+          <div class="content">ทุนไม่เยอะ ก็แตกหลักหมื่นได้</div>
+        </div>
+      </div><div class="comment">
+        <img src="https://i.postimg.cc/xTYh1GHp/Profile-Picture-1.png" alt="อ้ะอาย">
+        <div class="text">
+          <div class="name">อ้ะอาย</div>
+          <div class="stars">★★★★★</div>
+          <div class="content">เล่นขำๆ ตอนกลางคืน ตื่นมาดูเงินเข้าเฉย!</div>
+        </div>
+      </div><div class="comment">
+        <img src="https://i.postimg.cc/cC7zc6qc/Profile-Picture.png" alt="น้ำหวาน">
+        <div class="text">
+          <div class="name">น้ำหวาน</div>
+          <div class="stars">★★★★★</div>
+          <div class="content">ฟรีสปินรัวๆ ปั่นแป๊บเดียวบวกยับ!</div>
+        </div>
+      </div></div>
+
+  <script data-evaluated="true">
+    const comments = [
+      { name: "ธนพร", img: "https://i.postimg.cc/RZpDdjY2/1.png", text: "ปั่นไม่ถึง 10 ครั้ง ได้ฟรีสปิน แตกเป็นหมื่น" },
+      { name: "พลอยใส", img: "https://i.postimg.cc/DZXH8BBH/2.png", text: "ฟรีสปินบ่อยมากค่ะ ไม่เคยได้น้อยเลย" },
+      { name: "พาริฉัตร", img: "https://i.postimg.cc/1X1T6wdt/3.png", text: "แตกง่ายจริง ได้เป็นหมื่น ถอนจริงค่ะ" },
+      { name: "มินนี่", img: "https://i.postimg.cc/Wp0xVYDJ/4.png", text: "ฝากนิดเดียว แตกเกือบหมื่น ไม่คิดว่าจะได้จริง!" },
+      { name: "น้ำหวาน", img: "https://i.postimg.cc/cC7zc6qc/Profile-Picture.png", text: "ฟรีสปินรัวๆ ปั่นแป๊บเดียวบวกยับ!" },
+      { name: "อ้ะอาย", img: "https://i.postimg.cc/xTYh1GHp/Profile-Picture-1.png", text: "เล่นขำๆ ตอนกลางคืน ตื่นมาดูเงินเข้าเฉย!" },
+      { name: "จะจ๋า", img: "https://i.postimg.cc/dtBXk7js/Profile-Picture-2.png", text: "ทุนไม่เยอะ ก็แตกหลักหมื่นได้" },
+      { name: "ฟาง", img: "https://i.postimg.cc/W11yM25M/Profile-Picture-3.png", text: "ถอนง่าย ประทับใจมาก บริการดี" },
+      { name: "เจนนี่", img: "https://cdn.pixabay.com/photo/2018/08/30/11/10/girl-3641895_1280.jpg", text: "จับเงินหลักแสนไม่ยาก ถ้ารู้จังหวะ!" },
+      { name: "ลูกหว้า", img: "https://www.popcornfor2.com/wp-content/uploads/2024/08/news-full-120917.jpg", text: "ใช้แค่มือถือเครื่องเดียว ก็มีรายได้เข้าเรื่อยๆ" },
+      { name: "เกรช", img: "https://s.isanook.com/wo/0/ui/37/185249/h12.jpg", text: "เข้าบ่อยจนงง ไม่คิดว่าเล่นง่ายขนาดนี้!" },
+      { name: "มายด์", img: "https://s.isanook.com/wo/0/ui/37/185249/h9.jpg", text: "ไม่ต้องทุนเยอะ ก็บวกได้ทุกวัน" },
+      { name: "เตย", img: "https://s.isanook.com/wo/0/ui/37/185249/h4.jpg", text: "ใจฟูทุกครั้งที่กดสปิน แตกอีกแล้ว!" },
+      { name: "บีม", img: "https://s.isanook.com/wo/0/ui/37/185249/h6.jpg", text: "ได้ถอนทุกวัน แบบไม่ต้องลุ้นเยอะ" },
+      { name: "แนท", img: "https://s.isanook.com/wo/0/ui/37/185249/h2.jpg", text: "สนุกเหมือนได้รางวัลทุกครั้งที่เข้าเล่น" },
+      { name: "แพร", img: "https://s.isanook.com/wo/0/ui/37/185249/h3.jpg", text: "คืนทุนไว ไม่ต้องนั่งลุ้นนาน" },
+      { name: "พีช", img: "https://cdn.pixabay.com/photo/2016/09/22/09/32/face-1686740_640.jpg", text: "สายฟรีสปินถูกใจสิ่งนี้!" },
+      { name: "ภูมิ", img: "https://cdn.pixabay.com/photo/2017/08/16/08/41/face-2646849_640.jpg", text: "ไม่มีทุนเยอะก็เล่นได้จริง ได้ถอนจริง!" },
+    ];
+
+    const box = document.getElementById("comment-box");
+    let currentIndex = 0;
+
+    function addComment() {
+      const data = comments[currentIndex];
+      const div = document.createElement("div");
+      div.className = "comment pop";
+      div.innerHTML = `
+        <img src="${data.img}" alt="${data.name}">
+        <div class="text">
+          <div class="name">${data.name}</div>
+          <div class="stars">★★★★★</div>
+          <div class="content">${data.text}</div>
+        </div>
+      `;
+
+      box.insertBefore(div, box.children[1]); // ใส่หลัง LED strip
+
+      setTimeout(() => div.classList.remove("pop"), 700);
+
+      const allComments = box.querySelectorAll(".comment");
+      if (allComments.length > 4) {
+        box.removeChild(allComments[allComments.length - 1]);
+      }
+
+      currentIndex = (currentIndex + 1) % comments.length;
+    }
+
+    for (let i = 0; i < 4; i++) {
+      addComment();
+    }
+
+    setInterval(addComment, 2000);
+  </script>
+
+</div></div></div></div></div></div></div>
+
+<!-- ====== JS PATH ที่ให้มา (ไม่แก้ไข) ====== -->
+<script>
+document.querySelector("#blocks-container > div:nth-child(5)")
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Landing Page</title>
+
+  <!-- ✅ Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '1493261538640982');   // ใส่ Pixel ID ของคุณ
+    fbq('track', 'PageView');          // ✅ ติดแค่ครั้งเดียวพอ
+  </script>
+
+  <noscript>
+    <img height="1" width="1" 
+         src="https://www.facebook.com/tr?id=1493261538640982&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- ✅ End Facebook Pixel Code -->
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Kanit', sans-serif;
+      background: radial-gradient(circle at center, #00164f 0%, #000000 100%);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .button-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 30px 0;
+    }
+
+    /* ปุ่มสมัครสมาชิก */
+    .link-button {
+      display: inline-block;
+      padding: 15px 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #00baff, #0077ff);
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(0,170,255,0.4);
+      transition: 0.3s;
+      animation: pulse-glow 2s ease-in-out infinite, float 1.7s ease-in-out infinite, shine 2.2s infinite;
+    }
+
+    .link-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,170,255,0.7);
+    }
+
+    /* ปุ่มติดต่อ */
+    .Ctlink-button {
+      display: inline-block;
+      padding: 15px 60px;
+      font-size: 1.1rem;
+      font-weight: 450;
+      color: #fff;
+      background: linear-gradient(135deg, #4dff03, #16c000d8);
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(38, 255, 0, 0.4);
+      transition: 0.3s;
+      animation: Ctpulse-glow 2s ease-in-out infinite, shine 0.8s infinite;
+    }
+
+    .Ctlink-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgb(26, 236, 11);
+    }
+
+    /* แอนิเมชัน */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,170,255,0.3); }
+      50% { box-shadow: 0 0 15px rgba(0,170,255,0.8); }
+    }
+    @keyframes Ctpulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,255,51,0.3); }
+      50% { box-shadow: 0 0 15px rgba(0,255,51,0.8); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+@keyframes shine {
+  0% { left: -120%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+}
+  </style>
+</head>
+
+<body>
+
+  <div class="button-section">
+    <!-- 🔹 ปุ่มสมัครสมาชิก (ยิง event Purchase) -->
+    <a href="https://lin.ee/bPi5amn"
+       class="link-button"
+       onclick="trackPurchase(event)">
+       สมัครสมาชิกคลิ๊กเลย
+    </a>
+
+    <!-- 🔹 ปุ่มติดต่อสอบถาม (ยิง event Contact) -->
+    <a href="https://lin.ee/XSp8hdP"
+       class="Ctlink-button"
+       onclick="trackContact(event)">
+       ช่องทางติดต่อ (สำรอง) 📢
+    </a>
+  </div>
+
+  <script>
+    // ✅ ฟังก์ชันยิง Event “Purchase”
+    function trackPurchase(event) {
+      event.preventDefault();
+      fbq('track', 'Purchase', {currency: 'VND', value: 0});
+      setTimeout(function() {
+        window.open('https://lin.ee/bPi5amn', '_blank');
+      }, 300); // หน่วงเวลา 0.3 วิ เพื่อให้ Pixel ยิงเสร็จ
+    }
+
+    // ✅ ฟังก์ชันยิง Event “Contact”
+    function trackContact(event) {
+      event.preventDefault();
+      fbq('track', 'Contact');
+      setTimeout(function() {
+        window.open('https://lin.ee/XSp8hdP', '_blank');
+      }, 300);
+    }
+  </script>
+</body>
+</html>
