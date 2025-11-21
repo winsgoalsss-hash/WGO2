@@ -229,6 +229,53 @@ document.addEventListener('DOMContentLoaded', function(){
     // start updates
     setInterval(updateOnlineCounter, UPDATE_INTERVAL);
 });
+<script>
+// 🚫 ป้องกันคลิกขวา
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 🚫 ป้องกันปุ่มบางชุด
+document.onkeydown = function(e) {
+  // F12
+  if (e.keyCode === 123) return false;
+  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+U
+  if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) return false;
+  if (e.ctrlKey && e.keyCode === 85) return false;
+};
+
+// 🌀 รีเฟรชเมื่อคลิกขวา (ถ้าอยากใช้โหมดนี้แทน)
+document.addEventListener('contextmenu', e => {
+  e.preventDefault();
+  return false;       // ยกเลิกพฤติกรรมอื่นๆ เช่น รีเฟรช
+});
+
+// 💡 แจ้งเตือนถ้ามีการเปิด Developer Tools
+(function() {
+  let checkDevTools = false;
+  const element = new Image();
+  Object.defineProperty(element, 'id', {
+    get: function() {
+      checkDevTools = true;
+      setTimeout(() => {
+        if (checkDevTools) {
+          alert('DevTools are not allowed 👋🏻');
+        setTimeout(() => {
+          window.location.reload();
+          }, 300);
+        }
+      }, 500);
+    }
+  });
+  console.log(element);
+})();
+
+setInterval(() => {
+  if (window.outerHeight - window.innerHeight > 200 ||
+      window.outerWidth - window.innerWidth > 200) {
+    document.body.innerHTML = '<h2 style="color:white;text-align:center;">DevTools are not allowed 👋🏻 <p style="font-size: 3.5px;">**************</p></h2>';
+  }
+}, 1000);
+
+</script>
 
 /* ===== Existing jackpot and coins scripts (preserved) ===== */
 
