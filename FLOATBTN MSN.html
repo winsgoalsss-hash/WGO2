@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Floating Link Button</title>
+    <!-- ✅ Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        fbq('init', '1498959981314412');   // ใส่ Pixel ID ของคุณ
+        fbq('track', 'PageView');          // ✅ ติดแค่ครั้งเดียวพอ
+      </script>
+    
+      <noscript>
+        <img height="1" width="1" 
+             src="https://www.facebook.com/tr?id=1498959981314412&ev=PageView&noscript=1"/>
+      </noscript>
+      <!-- ✅ End Facebook Pixel Code -->
+    
+  <style>
+    /* --- Reset เล็กน้อย --- */
+    html,body { height:100%; margin:0; font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+    .floating-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;      /* ระยะห่างระหว่างปุ่ม */
+  z-index: 9999;
+  min-width: 48px;          /* อย่างน้อยสำหรับไอคอนบนมือถือ */
+  height: 48px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+    /* --- ปุ่มลอยหลัก --- */
+    .floating-link {
+      right: 20px;               /* ปรับระยะจากขอบขวา */
+      bottom: 20px;              /* ปรับระยะจากขอบล่าง */
+      z-index: 9999;             /* ลอยเหนือเนื้อหาอื่น */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #000000;       /* สีพื้น */
+      color: #fff;               /* สีตัวอักษร */
+      padding: 1.5px 25px;        /* ขนาดปุ่ม (สูง/กว้าง) */
+      border-radius: 999px;      /* ทำเป็นวงรี/กลม */
+      box-shadow: 0 6px 18px rgba(246, 192, 0, 0.25);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      min-width: 48px;          /* อย่างน้อยสำหรับไอคอนบนมือถือ */
+      height: 48px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+        /* --- ปุ่มลอยหลัก2 --- */
+        .floating-link2 {
+      right: 20px;               /* ปรับระยะจากขอบขวา */
+      bottom: 20px;              /* ปรับระยะจากขอบล่าง */
+      z-index: 9999;             /* ลอยเหนือเนื้อหาอื่น */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #f1f1f1;       /* สีพื้น */
+      color: #000000;               /* สีตัวอักษร */
+      padding: 1.5px 25px;        /* ขนาดปุ่ม (สูง/กว้าง) */
+      border-radius: 999px;      /* ทำเป็นวงรี/กลม */
+      box-shadow: 0 6px 18px rgba(246,192,0,0.25);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      min-width: 48px;          /* อย่างน้อยสำหรับไอคอนบนมือถือ */
+      height: 48px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+            /* --- ปุ่มลอยหลัก3 --- */
+            .floating-link3 {
+      right: 20px;               /* ปรับระยะจากขอบขวา */
+      bottom: 20px;              /* ปรับระยะจากขอบล่าง */
+      z-index: 9999;             /* ลอยเหนือเนื้อหาอื่น */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #2ec500;       /* สีพื้น */
+      color: #ffffff;               /* สีตัวอักษร */
+      padding: 1.5px 1.5px;        /* ขนาดปุ่ม (สูง/กว้าง) */
+      border-radius: 999px;      /* ทำเป็นวงรี/กลม */
+      box-shadow: 0 6px 18px rgba(116, 255, 23, 0.25);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      min-width: 48px;          /* อย่างน้อยสำหรับไอคอนบนมือถือ */
+      height: 48px;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ไอคอน (ถ้ามี) */
+    .floating-link .icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:20px;
+      height:20px;
+      flex:0 0 20px;
+    }
+
+    /* hover / focus */
+    .floating-link:hover,
+    .floating-link:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(255, 170, 11, 0.28);
+      outline: none;
+    }
+    .floating-link:active { transform: translateY(-1px) scale(.995); }
+
+    /* แสดงเฉพาะไอคอนถ้าต้องการ (ใช้คลาส .icon-only) */
+    .floating-link.icon-only { padding: 12px; width:48px; height:48px; border-radius: 12px; }
+
+    /* ตัวช่วยสำหรับมือถือ: เพิ่มขนาดพื้นที่สัมผัส */
+    @media (max-width: 480px) {
+      .floating-link { right: 16px; bottom: 16px; padding: 12px 14px; font-size:14px; }
+    }
+
+    /* ซ่อน/แสดง ด้วยคลาส .hidden (JS) */
+    .floating-link.hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+    .floating-link2 .icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:20px;
+      height:20px;
+      flex:0 0 20px;
+    }
+
+    /* hover / focus */
+    .floating-link2:hover,
+    .floating-link2:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(246,192,0,0.28);
+      outline: none;
+    }
+    .floating-link2:active { transform: translateY(-1px) scale(.995); }
+
+    /* แสดงเฉพาะไอคอนถ้าต้องการ (ใช้คลาส .icon-only) */
+    .floating-link2.icon-only { padding: 12px; width:48px; height:48px; border-radius: 12px; }
+
+    /* ตัวช่วยสำหรับมือถือ: เพิ่มขนาดพื้นที่สัมผัส */
+    @media (max-width: 480px) {
+      .floating-link2 { right: 16px; bottom: 16px; padding: 12px 14px; font-size:14px; }
+    }
+
+    /* ซ่อน/แสดง ด้วยคลาส .hidden (JS) */
+    .floating-link2.hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+    .floating-link3 .icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      height:100%;
+    }
+
+    /* hover / focus */
+    .floating-link3:hover,
+    .floating-link3:focus {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(246,192,0,0.28);
+      outline: none;
+    }
+    .floating-link3:active { transform: translateY(-1px) scale(.995); }
+
+    /* แสดงเฉพาะไอคอนถ้าต้องการ (ใช้คลาส .icon-only) */
+    .floating-link3.icon-only { padding: 12px; width:48px; height:48px; border-radius: 12px; }
+
+    /* ตัวช่วยสำหรับมือถือ: เพิ่มขนาดพื้นที่สัมผัส */
+    @media (max-width: 480px) {
+      .floating-link3 { right: 16px; bottom: 16px; padding: 12px 14px; font-size:14px; }
+    }
+
+    /* ซ่อน/แสดง ด้วยคลาส .hidden (JS) */
+    .floating-link3.hidden { opacity: 0; pointer-events: none; transform: translateY(8px); }
+
+    .label {
+  display: inline-block;
+  text-align: center;   /* จัดกึ่งกลางทั้ง 2 บรรทัด */
+  line-height: 1.2;
+}
+  </style>
+</head>
+<body>
+  <!-- ======== ปุ่มลิงก์ลอย ========
+       แก้ href ให้เป็น URL ที่ต้องการ
+       target="_blank" : เปิดแท็บใหม่ (ลบถ้าไม่ต้องการ)
+       rel="noopener noreferrer" : ความปลอดภัยเมื่อเปิดแท็บใหม่
+  -->
+  <div class="floating-container">  
+  <a
+    class="floating-link"
+    onclick="trackPurchase(event)"
+    id="myFloatingLink"
+    href="https://auto.messinew.net/login"
+    target="_blank">
+    <!-- ไอคอน SVG (แก้/ลบได้) -->
+    <span class="icon" aria-hidden="true">
+      <!-- ตัวอย่างไอคอนลิงก์ (SVG) -->
+      <img src="https://i.postimg.cc/21DWxp84/1-login.png" alt="" width="20" height="20" style="display:block;">
+    </span>
+
+    <!-- ข้อความปุ่ม (ถ้าต้องการให้มีข้อความ) -->
+    <span class="label">| เข้าสู่ระบบ |<br>| LOGIN |</span>
+  </a>
+
+  <a
+    class="floating-link2"
+    onclick="trackContact(event)"
+    id="myFloatingLink"
+    href="https://auto.messinew.net/register"
+    target="_blank"
+    rel="noopener noreferrer">
+    <!-- ไอคอน SVG (แก้/ลบได้) -->
+    <span class="icon" aria-hidden="true">
+      <!-- ตัวอย่างไอคอนลิงก์ (SVG) -->
+      <img src="https://i.postimg.cc/rdcSqDd1/pngegg-(2).png" alt="" width="20" height="20" style="display:block;">
+    </span>
+
+    <!-- ข้อความปุ่ม (ถ้าต้องการให้มีข้อความ) -->
+    <span class="label">สมัครฟรี !<br>คลิ๊กเลย</span>
+  </a>
+
+  <a
+  class="floating-link3"
+  onclick="trackContact(event)"
+  id="myFloatingLink"
+  href="https://lin.ee/RfxbluM"
+  target="_blank"
+  rel="noopener noreferrer">
+  <span class="label">LINE</span>
+</a>
+
+</div>
+  <script>
+    // ✅ ฟังก์ชันยิง Event “Purchase”
+    function trackPurchase(event) {
+      event.preventDefault();
+      fbq('track', 'Purchase', {currency: 'VND', value: 0});
+      setTimeout(function() {
+        window.open('https://auto.messinew.net/register', '_blank');
+      }, 300); // หน่วงเวลา 0.3 วิ เพื่อให้ Pixel ยิงเสร็จ
+    }
+
+    // ✅ ฟังก์ชันยิง Event “Contact”
+    function trackContact(event) {
+      event.preventDefault();
+      fbq('track', 'Contact');
+      setTimeout(function() {
+        window.open('https://lin.ee/RfxbluM', '_blank');
+      }, 300);
+    }
+  </script>
+
+  <script>
+    
+    // -- ตัวอย่างการซ่อนปุ่มเมื่อเลื่อนลง (optional)
+    // ถ้าไม่ต้องการ ให้ลบทิ้งทั้งบล็อกนี้
+    (function(){
+      var lastScroll = 0;
+      var link = document.getElementById('myFloatingLink');
+
+      // ถ้าต้องการเริ่มซ่อน/แสดง ให้เปิดใช้งาน below
+      var enableAutoHide = false; // <-- เปลี่ยนเป็น true เพื่อเปิดใช้
+
+      if (!enableAutoHide) return;
+
+      window.addEventListener('scroll', function(){
+        var cur = window.pageYOffset || document.documentElement.scrollTop;
+        if (cur > lastScroll && cur > 100) {
+          // เลื่อนลง -> ซ่อน
+          link.classList.add('hidden');
+        } else {
+          // เลื่อนขึ้น -> แสดง
+          link.classList.remove('hidden');
+        }
+        lastScroll = cur <= 0 ? 0 : cur;
+      }, {passive:true});
+    })();
+  </script>
+
+</body>
+</html>
